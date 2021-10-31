@@ -1,0 +1,25 @@
+---
+title: "DiffReport"
+author: "MeRIPseqPipe"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(grid)
+library(pheatmap)
+```
+design.matrix,compare.list,heatmap_dm.list,heatmap_de.list,volcano_dm.list,ecdf.list,quadrant.list
+## Heatmap
+  Heatmap of differential expression analysis
+```{r ,echo=FALSE}
+for (group in compare.list) {
+  print(group)
+  grid.newpage()
+  print(heatmap_dm.list[[group]])
+  grid.newpage()
+  print(heatmap_de.list[[group]]) 
+  print(volcano_dm.list[[group]])
+  print(quadrant.list[[group]])
+  print(ecdf.list[[group]])
+}
+```
