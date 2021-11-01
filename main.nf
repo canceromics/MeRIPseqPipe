@@ -12,9 +12,9 @@ MeRIPseqPipe：An integrated analysis pipeline for MeRIPseq data based on Nextf
 
 /*
  * Authors:
- * Qi Zhao <zhaoqi@sysucc.org.cn>;
  * Bao Xiaoqiong <baoxq@sysucc.org.cn>
  * Zhu Kaiyu <zhuky5@mail2.sysu.edu.cn>:
+ * Qi Zhao <zhaoqi@sysucc.org.cn>;
  */
 
 /* 
@@ -66,7 +66,6 @@ def helpMessage() {
       --skip_diffpeakCalling        Skip all Differential methylation analysis
       --skip_fastqc                 Skip FastQC
       --skip_rseqc                  Skip RSeQC
-      --skip_genebody_coverage      Skip calculating genebody coverage  
       --skip_edger                  Skip the EdgeR process of differential expression analysis steps
       --skip_deseq2                 Skip the DESeq2 process of differential expression analysis steps
       --skip_metpeak                Skip the MeTPeak process of Peak Calling steps
@@ -74,6 +73,7 @@ def helpMessage() {
       --skip_matk                   Skip the MATK process of Peak Calling steps
       --skip_QNB                    Skip the QNB process of Differential methylation analysis
       --skip_diffmatk               Skip the MATK process of Differential methylation analysis
+      --skip_createbedgraph         Skip the process of making bedgraph format files and creatIGVjs
     
     Main parameters of analysis mode:
       --stranded                    "yes" OR "no" OR "reverse"
@@ -86,13 +86,9 @@ def helpMessage() {
 
     Other options:
       --outdir                      The output directory where the results will be saved, defalut = $baseDir/results
-      --email                       Set this parameter to your e-mail address to get a summary e-mail with details of the run sent to you when the workflow exits
       --help                        To show the help message
       -name                         Name for the pipeline run. If not specified, Nextflow will automatically generate a random mnemonic.
 
-    AWSBatch options:
-      --awsqueue                    The AWSBatch JobQueue that needs to be set when running on AWSBatch
-      --awsregion                   The AWS Region for your AWS Batch job to run on
     """.stripIndent()
 }
 
@@ -595,7 +591,7 @@ process Fastp{
     set val(sample_id), file(reads), val(reads_single_end), val(gzip), val(input), val(group) from raw_fastq
 
     output:
-    set val(sample_name), file("*_aligners.fastq*"), val(reads_single_end), val(sample_id), val(gzip), val(input), val(group) into fastqc_reads, fastp_reads
+    set val(sample_name), file("*_aligners.fastq*"), val(reads_single_end), val(sample_id), val(gzip), val(input), val(group) into fastqc_reads, fastp_reads, featurecount_reads
     file "*" into fastp_results
 
     when:
@@ -1270,9 +1266,10 @@ process Meyer{
 */
 process FeatureCount{
     label 'analysis'
-    publishDir "${params.outdir}/expressionAnalysis/featurecount", mode: 'link', overwrite: true
+    publishDir "${params.outdir}/expressionAnalysis/featurecounts", mode: 'link', overwrite: true
 
     input:
+    set val(reads_single_end) from featurecount_reads
     file bam_bai_file from feacount_bam.collect()
     file formatted_designfile from formatted_designfile.collect()
     file gtf
@@ -1282,9 +1279,9 @@ process FeatureCount{
     file "expression.matrix" into htseq_results
 
     script:
-    println LikeletUtils.print_purple("Generate gene expression matrix by htseq-count and Rscript")
+    println LikeletUtils.print_purple("Generate gene expression matrix by featureCounts and Rscript")
     strand_info = params.stranded == "no" ? "0" : params.stranded == "reverse" ? "2" : "1"
-   // strand_info = reads_single_end? " " : " -p"
+    reads_type = reads_single_end? " " : " -p"
     // """
     // bash $baseDir/bin/htseq_count.sh $gtf $strand_info ${task.cpus}
     // Rscript $baseDir/bin/get_htseq_matrix.R $formatted_designfile ${task.cpus} 
@@ -1292,7 +1289,7 @@ process FeatureCount{
     """
     for bam_file in *.input*.bam
     do
-        featureCounts -p -T ${task.cpus} -s $strand_info -a ${gtf} -o \${bam_file/%_sort*/}.txt \${bam_file};
+        featureCounts ${reads_type} -T ${task.cpus} -s $strand_info -a ${gtf} -o \${bam_file/%_sort*/}.txt \${bam_file};
     done
     Rscript $baseDir/bin/generate_featurecount_mat.R $formatted_designfile ${task.cpus} 
     """ 
@@ -1468,7 +1465,7 @@ process MotifSearching {
     bed_prefix = bed_file.baseName
     println LikeletUtils.print_purple("Motif analysis is going on by DREME and Homer")
     """
-    cp ${motif_file_dir}/m6A_motif.meme ./
+    # cp ${motif_file_dir}/m6A_motif.meme ./
     sort -k5,5 -g ${bed_file} | awk 'FNR <= 2000{ print \$1"\\t"\$2"\\t"\$3}' > ${bed_prefix}.location
     intersectBed -wo -a ${bed_prefix}.location -b $gtf | awk -v OFS="\\t" '{print \$1,\$2,\$3,"*","*",\$10}' | sort -k1,2 | uniq > ${bed_prefix}_bestpeaks.bed
     fastaFromBed -name+ -split -s -fi $fasta -bed ${bed_prefix}_bestpeaks.bed > ${bed_prefix}_bestpeaks.fa
@@ -1832,7 +1829,7 @@ workflow.onComplete {
     def mqc_report = null
     try {
         if (workflow.success) {
-            mqc_report = multiqc_report.getVal()
+            mqc_report = multiqc_results.getVal()
             if (mqc_report.getClass() == ArrayList) {
                 log.warn "[MeRIPseqPpipe] Found multiple reports from process 'multiqc', will use only one"
                 mqc_report = mqc_report[0]

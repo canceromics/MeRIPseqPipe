@@ -1,0 +1,5 @@
+Sample_ID	input_R1	input_R2	ip_R1	ip_R2	Group_ID
+control_1	./test_datasets/test_data/bam_data/control_1.input.bam	false	./test_datasets/test_data/bam_data/control_1.ip.bam	false	control
+control_2	./test_datasets/test_data/bam_data/control_2.input.bam	false	./test_datasets/test_data/bam_data/control_2.ip.bam	false	control
+treated_1	./test_datasets/test_data/bam_data/treated_1.input.bam	false	./test_datasets/test_data/bam_data/treated_1.ip.bam	false	treated
+treated_2	./test_datasets/test_data/bam_data/treated_2.input.bam	false	./test_datasets/test_data/bam_data/treated_2.ip.bam	false	treated
