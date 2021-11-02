@@ -1,4 +1,4 @@
-# MeRIPseqPipe**
+# MeRIPseqPipe
 
 ## Introduction
 
