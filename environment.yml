@@ -1,10 +1,9 @@
 name: meripseqpipe-1.0dev
 channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
   - r
-  - conda-forge
-  - bioconda
-  - anaconda
-  - defaults
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda/
 dependencies:
   - openjdk=8.0.192
   - python=2.7.15
@@ -25,7 +24,7 @@ dependencies:
   - macs2=2.2.7.1
   - homer=4.11
   - dos2unix=7.4.1
-  - r-base=3.6.5
+  - r-base=3.6.3
   - bioconductor-edger=3.34.0
   - bioconductor-deseq2=1.32.0
   - igvtools=2.3.93
@@ -36,13 +35,13 @@ dependencies:
   - scipy=1.2.1
   - deeptools=3.1.3
   - ucsc-bigwigtowig=357
-  - r-ggplot2=3.1.1
+  - r-ggplot2=3.3.5
   - r-ggrepel=0.9.1
   - r-ggsci=2.9
   - r-pheatmap=1.0.12
-  - r-dplyr=0.8.0.1
-  - r-knitr=1.22
+  - r-dplyr=1.0.7
+  - r-knitr=1.36
   - r-ggseqlogo=0.1
-  - r-rmarkdown=1.10
+  - r-rmarkdown=2.11
   - subread=2.0.0 
   - pandoc=2.7.3

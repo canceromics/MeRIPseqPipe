@@ -1,5 +1,5 @@
 #!/bin/Rscript
-## Rscript get_htseq_matrix.R designfile THREAD_NUM eg. Rscript get_htseq_matrix.R designfile_single.txt 10
+## Rscript get_featurecount_matrix.R designfile THREAD_NUM eg. Rscript get_featurecount_matrix.R designfile_single.txt 10
 ## designfile: filename, control_or_treated, input_or_ip, group(default 0 is CONTROL_SITUATION else are TREATED_SITUATION)
 
 library(parallel)
@@ -23,12 +23,12 @@ mclapply(unique(designtable$Group),function(x){
     }
   }
   #parsing samplenames
-  output_pattern = paste0("htseq_group_",group_id)  #添加aligner
+  output_pattern = paste0("featurecount_group_",group_id)  #添加aligner
   fwrite(group.input.count.mat, file = paste0(output_pattern,"_input.count"), sep = "\t")
 },
 mc.cores = THREAD_NUM
 )
-group.mat.list = grep("htseq",list.files(path = "./",pattern = "input.count"), value = T)
+group.mat.list = grep("featurecount",list.files(path = "./",pattern = "input.count"), value = T)
 expression.matrix <- NULL
 for( file in group.mat.list ){
   tmp.expression.table <- as.matrix(read.table(file, header = TRUE, row.names = 1, check.names=F))
