@@ -1,15 +1,15 @@
 # Parameters
 
-- [Input/output options](#>input/output-options)
+- [Input/output options](#>inputoutput-options)
 - [Data feature options](#>data-feature-options)
-- [Reference genome options](#>Reference-genome-options)
-- [Quality control options](>Quality-control-options)
-- [Alignment options](#>Alignment-options)
-- [Expression analysis options](#>Expression-analysis-options)
-- [Peak calling options](#>Peak-calling-options)
-- [Peak merging options](#>Peak-merging-options)
-- [Methylation analysis options](#>Methylation-analysis-options)
-- [Other options](#>Other-options)
+- [Reference genome options](#>feference-genome-options)
+- [Quality control options](#>quality-control-options)
+- [Alignment options](#>alignment-options)
+- [Expression analysis options](#>expression-analysis-options)
+- [Peak calling options](#>peak-calling-options)
+- [Peak merging options](#>peak-merging-options)
+- [Methylation analysis options](#>methylation-analysis-options)
+- [Other options](#>other-options)
 
 ## >Input/output options
 
