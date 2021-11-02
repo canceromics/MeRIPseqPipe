@@ -45,7 +45,7 @@ def helpMessage() {
     Mandatory arguments:
       --designfile                  .tsv format(table splited by tabs): Sample_ID, input_R1, input_R2, ip_R1, ip_R2, Group_ID
       --comparefile                 .txt format: control_vs_treated;
-                                    '--comparefile false' for projects without differential analysis
+                                    "false" for projects without differential analysis and "two_groups" for only two groups in the designfile
       -profile                      Configuration files can contain the definition of one or more profiles.
                                     Available: conda, docker, test
     
@@ -60,30 +60,39 @@ def helpMessage() {
       --bwa_index                   Path to BWA index, eg. 'path/to/BWAIndex/*'
       --star_index                  Path to STAR index, eg. 'path/to/STARIndex/*'
 
-    Options:
-      --skip_qc                     Skip all Quality Control steps                        
-      --skip_peakCalling            Skip all Peak Calling steps
-      --skip_diffpeakCalling        Skip all Differential methylation analysis
-      --skip_fastqc                 Skip FastQC
-      --skip_rseqc                  Skip RSeQC
-      --skip_edger                  Skip the EdgeR process of differential expression analysis steps
-      --skip_deseq2                 Skip the DESeq2 process of differential expression analysis steps
-      --skip_metpeak                Skip the MeTPeak process of Peak Calling steps
-      --skip_macs2                  Skip the MACS2 process of Peak Calling steps
-      --skip_matk                   Skip the MATK process of Peak Calling steps
-      --skip_QNB                    Skip the QNB process of Differential methylation analysis
-      --skip_diffmatk               Skip the MATK process of Differential methylation analysis
-      --skip_createbedgraph         Skip the process of making bedgraph format files and creatIGVjs
-    
     Main parameters of analysis mode:
       --stranded                    "yes" OR "no" OR "reverse"
       --mapq_cutoff                 [0-255] for filtering reads of different mapping quality
+      --featurecount_minMQS         Integer giving the minimum mapping quality score a read must satisfy in order to be counted.
+      --motiflength                 length for HOMER motif searching
       --aligners                    "star" OR "bwa" OR "tophat2" OR "hisat2" OR "none","none" for bam files
       --expression_analysis_mode    "DESeq2" OR "edgeR" OR "none"
       --peakCalling_mode            "group" OR "independence" for MATK and MeTPeak
       --peakMerged_mode             "rank" OR "macs2" OR "MATK" OR "metpeak" OR "mspc"
       --methylation_analysis_mode   "MATK" OR "QNB" OR "Wilcox-test" OR "edgeR" OR "DESeq2"
 
+    Process skipping options:
+      --skip_fastp                  Skip fastp
+      --skip_fastqc                 Skip FastQC
+      --skip_rseqc                  Skip RSeQC
+      --skip_filterrRNA             Skip the process of rRNA cleaning before mapping
+      --skip_qc                     Skip all Quality Control steps
+      --skip_edger                  Skip the EdgeR process of differential expression analysis steps
+      --skip_deseq2                 Skip the DESeq2 process of differential expression analysis steps
+      --skip_sort                   Skip the process of sorting BAM files
+      --skip_peakCalling            Skip all Peak Calling steps
+      --skip_diffpeakCalling        Skip all Differential methylation analysis
+      --skip_metpeak                Skip the MeTPeak process of Peak Calling steps
+      --skip_macs2                  Skip the MACS2 process of Peak Calling steps
+      --skip_matk                   Skip the MATK process of Peak Calling steps
+      --skip_meyer                  Skip the Meyer process of Peak Calling steps
+      --skip_QNB                    Skip the QNB process of Differential methylation analysis
+      --skip_diffmatk               Skip the MATK process of Differential methylation analysis
+      --skip_annotation             Skip the process of peak annotation
+      --skip_motif                  Skip the process of motif searching
+      --skip_m6Aprediction          Skip the process of m6A site prediction
+      --skip_createbedgraph         Skip the process of making bedgraph format files and creatIGVjs
+    
     Other options:
       --outdir                      The output directory where the results will be saved, defalut = $baseDir/results
       --help                        To show the help message
@@ -135,15 +144,6 @@ if (!(workflow.runName ==~ /[a-z]+_[a-z]+/)) {
   custom_runName = workflow.runName
 }
 
-if ( workflow.profile == 'awsbatch') {
-  // AWSBatch sanity checking
-  if (!params.awsqueue || !params.awsregion) exit 1, "Specify correct --awsqueue and --awsregion parameters on AWSBatch!"
-  // Check outdir paths to be S3 buckets if running on AWSBatch
-  // related: https://github.com/nextflow-io/nextflow/issues/813
-  if (!params.outdir.startsWith('s3:')) exit 1, "Outdir not on S3 - specify S3 Bucket to run on AWSBatch!"
-  // Prevent trace files to be stored on S3 since S3 does not support rolling files.
-  if (workflow.tracedir.startsWith('s3:')) exit 1, "Specify a local tracedir or run without trace! S3 cannot be used for tracefiles."
-}
 
 //check fasta files
 if ( params.fasta ){
@@ -170,9 +170,9 @@ if ( params.rRNA_fasta ){
 }
 
 //check comparefile
-if( params.comparefile == "two_group" ){
+if( params.comparefile == "two_groups" ){
     comparefile = false
-    compareLines = Channel.from("two_group")
+    compareLines = Channel.from("two_groups")
 }else if( params.comparefile){
     comparefile = file(params.comparefile)
     if( !comparefile.exists() ) exit 1, print_red("Compare file not found: ${params.comparefile}")
@@ -591,7 +591,7 @@ process Fastp{
     set val(sample_id), file(reads), val(reads_single_end), val(gzip), val(input), val(group) from raw_fastq
 
     output:
-    set val(sample_name), file("*_aligners.fastq*"), val(reads_single_end), val(sample_id), val(gzip), val(input), val(group) into fastqc_reads, fastp_reads, featurecount_reads
+    set val(sample_name), file("*_aligners.fastq*"), val(reads_single_end), val(sample_id), val(gzip), val(input), val(group) into fastqc_reads, fastp_reads
     file "*" into fastp_results
 
     when:
@@ -1269,19 +1269,20 @@ process FeatureCount{
     publishDir "${params.outdir}/expressionAnalysis/featurecounts", mode: 'link', overwrite: true
 
     input:
-    set val(reads_single_end) from featurecount_reads
     file bam_bai_file from feacount_bam.collect()
     file formatted_designfile from formatted_designfile.collect()
     file gtf
 
     output:
+    //set file("*input*.count"), val(sample_name) into count_input
     file "*input*.count" into htseq_count_input, htseq_count_input_to_arrange
     file "expression.matrix" into htseq_results
 
     script:
     println LikeletUtils.print_purple("Generate gene expression matrix by featureCounts and Rscript")
     strand_info = params.stranded == "no" ? "0" : params.stranded == "reverse" ? "2" : "1"
-    reads_type = reads_single_end? " " : " -p"
+    reads_type = params.single_end ? "" : "-p"
+    minmqs = params.featurecount_minMQS
     // """
     // bash $baseDir/bin/htseq_count.sh $gtf $strand_info ${task.cpus}
     // Rscript $baseDir/bin/get_htseq_matrix.R $formatted_designfile ${task.cpus} 
@@ -1289,7 +1290,7 @@ process FeatureCount{
     """
     for bam_file in *.input*.bam
     do
-        featureCounts ${reads_type} -T ${task.cpus} -s $strand_info -a ${gtf} -o \${bam_file/%_sort*/}.txt \${bam_file};
+        featureCounts $reads_type -minMQS $minmqs -T ${task.cpus} -s $strand_info -a ${gtf} -o \${bam_file/%_sort*/}.txt \${bam_file};
     done
     Rscript $baseDir/bin/generate_featurecount_mat.R $formatted_designfile ${task.cpus} 
     """ 
@@ -1463,7 +1464,8 @@ process MotifSearching {
     script:
     motif_file_dir = baseDir + "/bin"
     bed_prefix = bed_file.baseName
-    println LikeletUtils.print_purple("Motif analysis is going on by DREME and Homer")
+    length = params.motiflength
+    println LikeletUtils.print_purple("Motif analysis is going on by Homer")
     """
     # cp ${motif_file_dir}/m6A_motif.meme ./
     sort -k5,5 -g ${bed_file} | awk 'FNR <= 2000{ print \$1"\\t"\$2"\\t"\$3}' > ${bed_prefix}.location
@@ -1473,7 +1475,7 @@ process MotifSearching {
     shuffleBed -incl ${bed12} -seed 12345 -noOverlapping -i ${bed_prefix}_bestpeaks.bed -g ${chromsizesfile} > ${bed_prefix}_random_peak.bed
     fastaFromBed -name+ -split -s -fi $fasta -bed ${bed_prefix}_random_peak.bed > ${bed_prefix}_random_peak.fa
     findMotifs.pl ${bed_prefix}_bestpeaks.fa fasta ${bed_prefix}_homer -fasta ${bed_prefix}_random_peak.fa -p ${task.cpus} \
-        -len 5,6,7,8 -S 10 -rna -dumpFasta > ${bed_prefix}_homer_run.log 2>&1
+        -len $length -S 10 -rna -dumpFasta > ${bed_prefix}_homer_run.log 2>&1
     """
 }
 
@@ -1695,7 +1697,7 @@ process DiffReport {
     diffReportRData = "DiffReport.RData"
     """
     cp $baseDir/bin/DiffReport.rmd ./
-    if [ "$compare_info" != "[two_group]" ]; then
+    if [ "$compare_info" != "[two_groups]" ]; then
         echo $compare_info | sed 's/^\\[//g' | sed 's/\\]\$//g' | sed s/[[:space:]]//g > compare_info
     else
         echo \$(awk 'BEGIN{FS=","}NR>1{print \$4}' $formatted_designfile |sort|uniq|awk 'NR==1{printf \$0"_vs_"}NR==2{print \$0}') > compare_info
