@@ -1,5 +1,7 @@
 # Parameters
 
+[TOC]
+
 ## >Input/output options
 
 | Params          | Default                                                   | Description                                                  |
@@ -13,8 +15,7 @@
 
 | Params         | Default | Description                                                  |
 | -------------- | ------- | ------------------------------------------------------------ |
-| `--single_end` | false   | "false" for paired_end sequencing;
-"true" for single_end sequencing. |
+| `--single_end` | false   | "false" for paired_end sequencing;<br />"true" for single_end sequencing. |
 | `--gzip`       | true    | Whether FASTQ files are be gzipped.                          |
 | `--stranded`   | no      | "yes" means stranded sequencing data;<br />"no" means unstranded sequncing data;<br />"reverse" means reversely stranded sequencing data. |
 
