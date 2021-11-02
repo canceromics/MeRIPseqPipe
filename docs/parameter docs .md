@@ -1,6 +1,15 @@
 # Parameters
 
-[TOC]
+- [Input/output options](#>Input/output options)
+- [Data feature options](#>Data feature options)
+- [Reference genome options](#>Reference genome options)
+- [Quality control options](>Quality control options)
+- [Alignment options](#>Alignment options)
+- [Expression analysis options](#>Expression analysis options)
+- [Peak calling options](#>Peak calling options)
+- [Peak merging options](#>Peak merging options)
+- [Methylation analysis options](#>Methylation analysis options)
+- [Other options](#>Other options)
 
 ## >Input/output options
 
@@ -101,3 +110,4 @@
 | `--monochrome_logs` | false                                 | Do not use coloured log outputs.                             |
 | `--multiqc_config`  | “$baseDir/assets/multiqc_config.yaml” | Custom config file to supply to MultiQC.                     |
 | `--tracedir`        | “${params.outdir}/pipeline_info”      | Directory to keep pipeline Nextflow logs and reports.        |
+
