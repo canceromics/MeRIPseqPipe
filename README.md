@@ -43,13 +43,13 @@ See [usage docs](docs/usage.md) for all of the available options when running th
 
 The MeRIPseqPipe documentation is split into the following files:
 
-1. [Usage](usage.md)
-    * [Parameter Documentation](parameter_docs.md)
+1. [Usage](docs/usage.md)
+    * [Parameter Documentation](docs/parameter_docs.md)
     * An overview of how the pipeline works, how to run it and a description of all of the different command-line flags.
     * let us know if you need more customization!
-2. [Output](output.md)
+2. [Output](docs/output.md)
     * An overview of the different results produced by the pipeline
-3. [Troubleshooting](troubleshooting.md)
+3. [Troubleshooting](docs/troubleshooting.md)
 
 ## Credits
 
