@@ -54,10 +54,10 @@
 
 ## >Alignment options
 
-| Params          | Default | Description                                                  |
-| --------------- | ------- | ------------------------------------------------------------ |
-| `--aligners`    | star    | Specifies the alignment algorithm to use.<br />Available option:<br />"star" OR "bwa" OR "tophat2" OR "hisat2" OR "none" |
-| `--skip_sort`   | false   | Skip the process of sorting BAM files.                       |
+| Params           | Default | Description                                                  |
+| ---------------- | ------- | ------------------------------------------------------------ |
+| `--aligners`     | star    | Specifies the alignment algorithm to use.<br />Available option:<br />"star" OR "bwa" OR "tophat2" OR "hisat2" OR "none" |
+| `--skip_sort`    | false   | Skip the process of sorting BAM files.                       |
 | `--mapq_cutoff` | 20      | Range from 0 to 255, "255" means the pipeline will only keep the unique mapping reads, "0" means keeping all reads. |
 
 ## >Expression analysis options
@@ -110,4 +110,3 @@
 | `--monochrome_logs` | false                                 | Do not use coloured log outputs.                             |
 | `--multiqc_config`  | “$baseDir/assets/multiqc_config.yaml” | Custom config file to supply to MultiQC.                     |
 | `--tracedir`        | “${params.outdir}/pipeline_info”      | Directory to keep pipeline Nextflow logs and reports.        |
-
