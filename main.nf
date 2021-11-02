@@ -80,6 +80,7 @@ def helpMessage() {
       --skip_edger                  Skip the EdgeR process of differential expression analysis steps
       --skip_deseq2                 Skip the DESeq2 process of differential expression analysis steps
       --skip_sort                   Skip the process of sorting BAM files
+      --skip_expression             Skip all Differential expression analysis
       --skip_peakCalling            Skip all Peak Calling steps
       --skip_diffpeakCalling        Skip all Differential methylation analysis
       --skip_metpeak                Skip the MeTPeak process of Peak Calling steps
@@ -1311,7 +1312,7 @@ process DESeq2{
     file "DESeq2*.csv" into deseq2_results
     
     when:
-    !params.skip_deseq2 && !params.skip_expression
+    !params.skip_deseq2 && !params.skip_expression && params.comparefile
     
     script:
     println LikeletUtils.print_purple("Differential expression analysis performed by DESeq2 ($compare_str)")
@@ -1334,7 +1335,7 @@ process EdgeR{
     file "edgeR*.csv" into edgeR_results
     
     when:
-    !params.skip_edger && !params.skip_expression
+    !params.skip_edger && !params.skip_expression && params.comparefile
 
     script:
     println LikeletUtils.print_purple("Differential expression analysis performed by EdgeR ($compare_str)")

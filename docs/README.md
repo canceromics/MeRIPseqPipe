@@ -1,12 +1,10 @@
-# nf-core/meripseqpipe: Documentation
+# MeRIPseqPipe: Documentation
 
-The nf-core/meripseqpipe documentation is split into the following files:
+The MeRIPseqPipe documentation is split into the following files:
 
-1. [Installation](https://nf-co.re/usage/installation)
-2. Pipeline configuration
-    * [Local installation](https://nf-co.re/usage/local_installation)
-    * [Adding your own system config](https://nf-co.re/usage/adding_own_config)
-    * [Reference genomes](https://nf-co.re/usage/reference_genomes)
-3. [Running the pipeline](usage.md)
-4. [Output and how to interpret the results](output.md)
-5. [Troubleshooting](https://nf-co.re/usage/troubleshooting)
+1. [Usage](usage.md)
+    * [Parameter Documentation](parameter_docs.md)
+    * An overview of how the pipeline works, how to run it and a description of all of the different command-line flags.
+2. [Output](output.md)
+    * An overview of the different results produced by the pipeline
+3. [Troubleshooting](troubleshooting.md)
