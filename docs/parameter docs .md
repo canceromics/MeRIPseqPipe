@@ -1,3 +1,14 @@
+<style>
+table th:first-of-type {
+    width: 20%;
+}
+table th:nth-of-type(2) {
+    width: 30%;
+}
+table th:nth-of-type(3) {
+    width: 50%;
+}
+</style>
 # Parameters
 
 - [Input/output options](#inputoutput-options)
@@ -13,12 +24,12 @@
 
 ## >Input/output options
 
-| Params          | Default                                                   | Description                                                  |
-| --------------- | --------------------------------------------------------- | ------------------------------------------------------------ |
-| `--designfile`  | “$baseDir/test_datasets/inputfiles/designfile_paired.tsv” | A tab-separated table describing the path to the Input files and IP files (FASTQ or BAM format) and the grouping information (like “control” or “treated”). It's recommended to edit by Excel and save as .tsv suffix file. |
-| `--comparefile` | "$baseDir/test_datasets/inputfiles/comparefile.txt"       | A text file that specifies the comparison between two different groups.<br />Other options:<br />"false" for projects without differential analysis;<br />"two_groups" for only two groups in the designfile. |
-| `--outdir`      | "$baseDir/results"                                        | Path to the output directory where the results will be saved. |
-| `-profile`      | docker                                                    | Configuration files can contain the definition of one or more profiles.<br />Available options:<br />conda, docker, test |
+| Params | Default                                                   | Description                                                  |
+| ---------------------- | --------------------------------------------------------- | ------------------------------------------------------------ |
+| `--designfile`         | “$baseDir/test_datasets/inputfiles/designfile_paired.tsv” | A tab-separated table describing the path to the Input files and IP files (FASTQ or BAM format) and the grouping information (like “control” or “treated”). It's recommended to edit by Excel and save as .tsv suffix file. |
+| `--comparefile`        | "$baseDir/test_datasets/inputfiles/comparefile.txt"       | A text file that specifies the comparison between two different groups.<br />Other options:<br />"false" for projects without differential analysis;<br />"two_groups" for only two groups in the designfile. |
+| `--outdir`             | "$baseDir/results"                                        | Path to the output directory where the results will be saved. |
+| `-profile`             | docker                                                    | Configuration files can contain the definition of one or more profiles.<br />Available options:<br />conda, docker, test |
 
 ## >Data feature options
 
@@ -58,7 +69,7 @@
 | ---------------- | ------- | ------------------------------------------------------------ |
 | `--aligners`     | star    | Specifies the alignment algorithm to use.<br />Available option:<br />"star" OR "bwa" OR "tophat2" OR "hisat2" OR "none" |
 | `--skip_sort`    | false   | Skip the process of sorting BAM files.                       |
-| `--mapq_cutoff` | 20      | Range from 0 to 255, "255" means the pipeline will only keep the unique mapping reads, "0" means keeping all reads. |
+| `--mapq_cutoff ` | 20      | Range from 0 to 255, "255" means the pipeline will only keep the unique mapping reads, "0" means keeping all reads. |
 
 ## >Expression analysis options
 
@@ -110,3 +121,4 @@
 | `--monochrome_logs` | false                                 | Do not use coloured log outputs.                             |
 | `--multiqc_config`  | “$baseDir/assets/multiqc_config.yaml” | Custom config file to supply to MultiQC.                     |
 | `--tracedir`        | “${params.outdir}/pipeline_info”      | Directory to keep pipeline Nextflow logs and reports.        |
+
