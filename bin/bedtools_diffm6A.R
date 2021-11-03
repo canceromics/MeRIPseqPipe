@@ -31,7 +31,7 @@ row_wilcox <- function(design.matrix,group_id_1,group_id_2,x,test_mode=""){
 # Get the information of groups from compare_str
 if(length(unique(design.matrix$Type)) < 2){
   stop( "The count of Group is less than two, please check your designfile.")
-}else if( compare_str == "two_group" ){
+}else if( compare_str == "two_groups" ){
   # Get the information without compare_str beacause of only two groups
   group_id_1 <- unique(design.matrix$Type)[1]
   group_id_2 <- unique(design.matrix$Type)[2]

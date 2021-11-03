@@ -36,7 +36,7 @@ function matk_diffm6a_by_two_id()
         NR>1{print $1":"$2"-"$3,$4,$5,$6,$7,log($8)/log(2),$9,$10}' tmp.${group_id_1}_${group_id_2}.txt  > MATK_diffm6A_${group_id_1}_${group_id_2}.txt
 }
 
-if [ "$compare_str" != "two_group" ]; then
+if [ "$compare_str" != "two_groups" ]; then
     # Running MATK quantification with compare_str
     group_id_1=$(echo $compare_str | awk 'BEGIN{FS="_vs_"}{print $1}')
     group_id_2=$(echo $compare_str | awk 'BEGIN{FS="_vs_"}{print $2}')

@@ -19,12 +19,11 @@ colnames(design.matrix) <- "Condition"
 # Get the information of groups from compare_str
 if(length(unique(design.matrix$Condition)) < 2){
   stop( "The count of Group is less than two, please check your designfile.")
-}else if( compare_str == "two_group" ){
+}else if( compare_str == "two_groups" ){
   # Get the information without compare_str beacause of only two groups
-  group_id_1 <- unique(design.matrix$Condition)[1]
-  group_id_2 <- unique(design.matrix$Condition)[2]
+  group_id_1 <- unique(designtable$Group)[1]
+  group_id_2 <- unique(designtable$Group)[2]
 }else{
-  # Running MeTDiff quantification with compare_str
   group_id_1 <- strsplit(as.character(compare_str), "_vs_")[[1]][1]
   group_id_2 <- strsplit(as.character(compare_str), "_vs_")[[1]][2]
 }

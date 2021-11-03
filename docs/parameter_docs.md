@@ -9,6 +9,7 @@
 - [Peak calling options](#peak-calling-options)
 - [Peak merging options](#peak-merging-options)
 - [Methylation analysis options](#methylation-analysis-options)
+- [Plot options](#plot-options)
 - [Other options](#other-options)
 
 ## >Input/output options
@@ -96,6 +97,13 @@
 | `--skip_diffpeakCalling`      | false   | Skip all differential methylation analysis.                  |
 | `--skip_motif`                | false   | Skip the process of motif searching.                         |
 
+## >Plot options
+
+| Params           | Default | Description                                                  |
+| ---------------- | ------- | ------------------------------------------------------------ |
+| --delfc          | 0.58    | The cutoff of log2 fold change in differential gene filtering. |
+| --dmlfc          | 0.58    | The cutoff of log2 fold change in differential peak filtering. |
+| --cluster_method | single  | The method of Hierarchical clustering.<br />Available options:<br />"ward.D", "ward.D2", "single", "complete", "average", "mcquitty", "median", "centroid" |
 ## >Other options
 
 | Params              | Default                               | Description                                                  |
@@ -110,4 +118,3 @@
 | `--monochrome_logs` | false                                 | Do not use coloured log outputs.                             |
 | `--multiqc_config`  | “$baseDir/assets/multiqc_config.yaml” | Custom config file to supply to MultiQC.                     |
 | `--tracedir`        | “${params.outdir}/pipeline_info”      | Directory to keep pipeline Nextflow logs and reports.        |
-

@@ -8,9 +8,12 @@ output: html_document
 library(grid)
 library(pheatmap)
 ```
-design.matrix,compare.list,heatmap_dm.list,heatmap_de.list,volcano_dm.list,ecdf.list,quadrant.list
-## Heatmap
-  Heatmap of differential expression analysis
+Heatmap DM plot 
+Heatmap DE plot
+Volcano Plot of DM
+Quadrant Plot between DE and DM
+ECDF curve
+
 ```{r ,echo=FALSE}
 for (group in compare.list) {
   print(group)

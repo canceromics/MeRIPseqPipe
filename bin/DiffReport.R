@@ -6,7 +6,9 @@ args <- commandArgs(T)
 #args <- c("macs2_MeTDiff_DESeq2_arranged_results_2019-12-11.m6APipe", "DiffReport.RData")
 m6APipe.data <- args[1]#"formatted_designfile.txt"
 output.Rdata <- args[2]#"compare_info"
-
+de_lfc <- as.numeric(args[3])
+dm_lfc <- as.numeric(args[4])
+cluster_meth <- args[5]
 library(pheatmap)
 library(ggplot2)
 library(ggrepel)
@@ -25,13 +27,13 @@ assignInNamespace(x="draw_colnames", value="draw_colnames_90",
 
 heatmap_dm <- function(mat,coldt){
   pheatmap(mat, cluster_rows=FALSE, show_rownames=F, cluster_cols=FALSE, annotation_col=coldt, 
-           main = "Heatmap of Different Methylation", scale = "row")
+           main = "Differentially Methylated m6As", scale = "row")
 }
 
 heatmap_de <- function(mat, coldt){
   pheatmap(mat, cluster_rows=FALSE, show_rownames=F, cluster_cols=FALSE, annotation_col=coldt, 
            color = colorRampPalette(c(rep('#1C2B6F',1),'black', rep('#E31E26',1)))(50),
-           main = "Heatmap of Different Expression", scale = "row")
+           main = "Differentially Expressed Genes", scale = "row")
 }
 
 ECDF_plot <- function(df,value_var,group,plot_title="",test_result=""){
@@ -59,14 +61,14 @@ ECDF_plot <- function(df,value_var,group,plot_title="",test_result=""){
   return(p)
 }
 
-volcano_plot_dm = function(res, Sample_1 = "A", Sample_2 = "B", lfc = 0.58, pval = 0.05, groupname = ""){
+volcano_plot_dm = function(res, Sample_1 = "A", Sample_2 = "B", lfc = dm_lfc, pval = 0.05, groupname = ""){
   par(mar = c(5, 6, 5, 5))
   tab = data.frame(logFC = res$log2FC, negLogPval = -log10(res$pvalue)) 
   tab$gene_name = rownames(res)
   tab = na.omit(tab)
   tab$threshold <- "C"
   tab$threshold[tab$logFC >= lfc & tab$negLogPval > -log10(pval)] <- "B"
-  tab$threshold[tab$logFC <=-lfc & tab$negLogPval > -log10(pval)] <- "A"
+  tab$threshold[tab$logFC <= -lfc & tab$negLogPval > -log10(pval)] <- "A"
   #tab<-tab%>%mutate(threshold = ifelse(logFC >= lfc & negLogPval > -log10(pval) ,"B", ifelse(logFC<=-lfc & negLogPval > -log10(pval), "A", "C")))
   n_up = length(which(tab$threshold=="B"))
   n_down = length(which(tab$threshold=="A"))
@@ -79,22 +81,22 @@ volcano_plot_dm = function(res, Sample_1 = "A", Sample_2 = "B", lfc = 0.58, pval
     geom_vline(aes(xintercept=-lfc), linetype="dashed") +
     geom_vline(aes(xintercept=lfc), linetype="dashed") +
     ggtitle(paste("Volcano Plot of Different Methylation in", groupname))+
-    xlab(expression(paste(Log[2], " fold change", sep = ""))) +
+    xlab(expression(paste(Log[2], " Fold Change", sep = ""))) +
     ylab(expression(paste(-Log[10], " adjusted P value", sep = ""))) +
     theme_bw() +
     theme(legend.position = 'top',
           plot.title = element_text(hjust = 0.5))
 }
 
-quadrant_plot <- function(quadrant.data, lfc = 0.58 , pval = 0.05, groupname = ""){
+quadrant_plot <- function(quadrant.data, delfc = de_lfc , dmlfc = dm_lfc, pval = 0.05, groupname = ""){
     quadrant.data$threshold <- "nosig"
-    quadrant.data$threshold[quadrant.data$m6A >= lfc & quadrant.data$exp >= lfc &
+    quadrant.data$threshold[quadrant.data$m6A >= dmlfc & quadrant.data$exp >= delfc &
                             quadrant.data$m6A.p <= pval & quadrant.data$exp.p <= pval ] <- "Hyper-up"
-    quadrant.data$threshold[quadrant.data$m6A >= lfc & quadrant.data$exp <= -lfc &
+    quadrant.data$threshold[quadrant.data$m6A >= dmlfc & quadrant.data$exp <= -delfc &
                             quadrant.data$m6A.p <= pval & quadrant.data$exp.p <= pval ] <- "Hyper-down"
-    quadrant.data$threshold[quadrant.data$m6A <= -lfc & quadrant.data$exp >= lfc &
+    quadrant.data$threshold[quadrant.data$m6A <= -dmlfc & quadrant.data$exp >= delfc &
                               quadrant.data$m6A.p <= pval & quadrant.data$exp.p <= pval ] <- "Hypo-up"
-    quadrant.data$threshold[quadrant.data$m6A <= -lfc & quadrant.data$exp <= -lfc &
+    quadrant.data$threshold[quadrant.data$m6A <= -dmlfc & quadrant.data$exp <= -delfc &
                               quadrant.data$m6A.p <= pval & quadrant.data$exp.p <= pval ] <- "Hypo-down"
     quadrant.data.length <- table(quadrant.data$threshold)
     quadrant.data <- na.omit(quadrant.data)
@@ -102,10 +104,10 @@ quadrant_plot <- function(quadrant.data, lfc = 0.58 , pval = 0.05, groupname = "
     ggplot()+
       geom_point(data = quadrant.data,
                  aes_string(x= "exp" ,y="m6A", color="threshold"),size = 1)+
-      geom_hline(yintercept = lfc,linetype="dashed")+
-      geom_hline(yintercept = -lfc,linetype="dashed")+
-      geom_vline(xintercept = lfc,linetype="dashed")+ylab("dmlogfc")+
-      geom_vline(xintercept = -lfc,linetype="dashed")+
+      geom_hline(yintercept = dmlfc,linetype="dashed")+
+      geom_hline(yintercept = -dmlfc,linetype="dashed")+
+      geom_vline(xintercept = delfc,linetype="dashed")+ylab("Log2 Fold Change (methylation)")+ xlab("Log2 Fold Change (expression)")+
+      geom_vline(xintercept = -delfc,linetype="dashed")+
       scale_x_continuous(limits = c(-5,5))+
       scale_y_continuous(limits = c(-5,5))+
       ggtitle(paste("Quadrant Plot between Methylation and Expression in", groupname))+
@@ -123,7 +125,7 @@ quadrant_plot <- function(quadrant.data, lfc = 0.58 , pval = 0.05, groupname = "
                  aes_string(x= "exp" ,y="m6A", color="threshold"),size = 1.5)
 
 }
-matrixcluster <- function(matrixData, cluster_rows = TRUE, cluster_cols = TRUE, cmethod = "complete"){
+matrixcluster <- function(matrixData, cluster_rows = TRUE, cluster_cols = TRUE, cmethod = cluster_meth){
   if(cluster_rows == TRUE){
     ht <- hclust(dist(matrixData), method = cmethod)          #对行进行聚类
     rowInd <- ht$order                                       #将聚类后行的顺序存为rowInd 
@@ -157,7 +159,7 @@ for( group in as.character(compare.list) ){
   coldata$Type = as.factor(coldata$Type)
   ## dm
   dmres = diffm6A.list[[which(names(diffm6A.list)==group)]]
-  dmg = subset(dmres, abs(log2FC) > 0.58 & pvalue < 0.05)
+  dmg = subset(dmres, abs(log2FC) > dm_lfc & pvalue < 0.05)
   if (nrow(dmg)<=1) dmg = dmres
   matrix.dm = m6a.anno.matrix[,-c(1:3)]
   dm_mat = matrix.dm[dmg$PeakRegion,rownames(coldata)]
@@ -165,11 +167,11 @@ for( group in as.character(compare.list) ){
   dm_mat = log2(dm_mat+1)
   dm_mat = dm_mat[select$PeakRegion,]
   dm_mat = na.omit(dm_mat)
-  dm_mat_new <- matrixcluster(dm_mat,cmethod = "single")
+  dm_mat_new <- matrixcluster(dm_mat,cmethod = cluster_meth)
   heatmap_dm.list[[group]] <- heatmap_dm(dm_mat_new,coldata)
   ## de
   deres = diffexpression.list[[which(names(diffexpression.list)==group)]]
-  deg = subset(deres, abs(log2FoldChange)> 0.58 & pvalue < 0.05)
+  deg = subset(deres, abs(log2FoldChange)> de_lfc & pvalue < 0.05)
   if (nrow(deg)<=1) deg = deres
   rownames(deg) = deg$ID
   de_mat = expression.matrix[row.names(deg),rownames(coldata)]
@@ -177,7 +179,7 @@ for( group in as.character(compare.list) ){
   de_mat = log2(de_mat+1)
   de_mat = de_mat[rownames(select),]
   de_mat = na.omit(de_mat)
-  de_mat_new <- matrixcluster(de_mat,cmethod = "single")
+  de_mat_new <- matrixcluster(de_mat,cmethod = cluster_meth)
   heatmap_de.list[[group]] <- heatmap_de(de_mat_new,coldata)
   
   ## ecdf
@@ -200,7 +202,7 @@ for( group in as.character(compare.list) ){
                               m6A.p = diffm6a.results$pvalue,
                               exp = diffexp.results[diffm6a.results$ID,"log2FoldChange"],
                               exp.p = diffexp.results[diffm6a.results$ID,"pvalue"])
-  quadrant.list[[group]] <-quadrant_plot(quadrant.data,lfc = 0.58,pval = 0.05,groupname = group)
+  quadrant.list[[group]] <-quadrant_plot(quadrant.data,delfc = de_lfc,dmlfc = dm_lfc, pval = 0.05,groupname = group)
   
   ## plot
   pdf(file = paste0("heatmap_dm_",group,".pdf"),paper = "USr")

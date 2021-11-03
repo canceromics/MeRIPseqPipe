@@ -36,7 +36,7 @@ def helpMessage() {
 
     The typical command for running the pipeline is as follows:
 
-    nextflow run path/to/MeRIPseqPipe --designfile 'path/to/designfile/designfile.tsv' --comparefile 'path/to/comparefile/compare.txt' -profile <docker/test/conda> -resume
+    nextflow run path/to/MeRIPseqPipe --designfile 'path/to/designfile.tsv' --comparefile 'path/to/compare.txt' -profile <docker/test/conda> -resume
     
     OR, 
 
@@ -284,6 +284,7 @@ if (params.email || params.email_on_fail) {
 println LikeletUtils.print_yellow("=====================================Reads types================================")
 println (LikeletUtils.print_yellow("SingleEnd                      : ") + LikeletUtils.print_green(params.single_end ? 'Single-End' : 'Paired-End'))
 println (LikeletUtils.print_yellow("Stranded                       : ") + LikeletUtils.print_green(params.stranded))
+println (LikeletUtils.print_yellow("gzip                           : ") + LikeletUtils.print_green(params.gzip))
 
 println LikeletUtils.print_yellow("====================================Mode selected==============================")
 println (LikeletUtils.print_yellow("aligners                       : ") + LikeletUtils.print_green(params.aligners))
@@ -1057,13 +1058,101 @@ sorted_bam.groupTuple(by: [0,1]).groupTuple(by: index_peakCallingbygroup)
 }, bai.flatten()]}
 .into{ macs2_bam; metpeak_bam; matk_bam; meyer_bam}
 
+
 /*
 ========================================================================================
-                            Step 4 Peak Calling
+                        Step 4 Differential expression analysis
+========================================================================================
+*/
+process FeatureCount{
+    label 'analysis'
+    publishDir "${params.outdir}/expressionAnalysis/featurecounts", mode: 'link', overwrite: true
+
+    input:
+    file bam_bai_file from feacount_bam.collect()
+    file formatted_designfile from formatted_designfile.collect()
+    file gtf
+
+    output:
+    //set file("*input*.count"), val(sample_name) into count_input
+    file "*input*.count" into htseq_count_input, htseq_count_input_to_arrange
+    file "expression*.matrix" into htseq_results
+    file "expression*.count.matrix" into htseq_diffm6a_results
+
+    script:
+    println LikeletUtils.print_purple("Generate gene expression matrix by featureCounts and Rscript")
+    strand_info = params.stranded == "no" ? "0" : params.stranded == "reverse" ? "2" : "1"
+    reads_type = params.single_end ? "" : "-p "
+    minmqs = params.featurecount_minMQS
+    align_tool = params.aligners
+    // """
+    // bash $baseDir/bin/htseq_count.sh $gtf $strand_info ${task.cpus}
+    // Rscript $baseDir/bin/get_htseq_matrix.R $formatted_designfile ${task.cpus} 
+    // """
+    """
+    for bam_file in *.input*.bam
+    do
+        featureCounts $reads_type-Q $minmqs -T ${task.cpus} -s $strand_info -a ${gtf} -o \${bam_file/%_sort*/}.txt \${bam_file};
+    done
+    Rscript $baseDir/bin/generate_featurecount_mat.R $formatted_designfile ${task.cpus} $gtf $align_tool
+    """ 
+}
+
+process DESeq2{
+    label 'analysis'
+    tag "$compare_str"
+
+    publishDir "${params.outdir}/expressionAnalysis/DESeq2", mode: 'link', overwrite: true
+
+    input:
+    file reads_count_input from htseq_count_input.collect()
+    file formatted_designfile from formatted_designfile.collect()
+    val compare_str from compareLines_for_DESeq2
+
+    output:
+    file "DESeq2*.csv" into deseq2_results
+    
+    when:
+    !params.skip_deseq2 && !params.skip_expression && params.comparefile
+    
+    script:
+    println LikeletUtils.print_purple("Differential expression analysis performed by DESeq2 ($compare_str)")
+    """
+    Rscript $baseDir/bin/DESeq2.R $formatted_designfile $compare_str $params.aligners
+    """ 
+}
+
+process EdgeR{
+    label 'analysis'
+    tag "$compare_str"
+    publishDir "${params.outdir}/expressionAnalysis/edgeR", mode: 'link', overwrite: true
+
+    input:
+    file reads_count_input from htseq_count_input.collect()
+    file formatted_designfile from formatted_designfile.collect()
+    val compare_str from compareLines_for_edgeR
+
+    output:
+    file "edgeR*.csv" into edgeR_results
+    
+    when:
+    !params.skip_edger && !params.skip_expression && params.comparefile
+
+    script:
+    println LikeletUtils.print_purple("Differential expression analysis performed by EdgeR ($compare_str)")
+    """
+    Rscript $baseDir/bin/edgeR.R $formatted_designfile $compare_str $params.aligners
+    """ 
+}
+
+
+/*
+========================================================================================
+                            Step 5 Peak Calling
 ========================================================================================
 */ 
 /*
- * STEP 4 - 1  Peak Calling------MetPeak, MACS2, MATK
+ * STEP 5 - 1  Peak Calling------MetPeak, MACS2, MATK
 */
 process Metpeak {
     tag "$peakcalling_tag"
@@ -1262,95 +1351,11 @@ process Meyer{
 
 /*
 ========================================================================================
-                        Step 5 Differential expression analysis
-========================================================================================
-*/
-process FeatureCount{
-    label 'analysis'
-    publishDir "${params.outdir}/expressionAnalysis/featurecounts", mode: 'link', overwrite: true
-
-    input:
-    file bam_bai_file from feacount_bam.collect()
-    file formatted_designfile from formatted_designfile.collect()
-    file gtf
-
-    output:
-    //set file("*input*.count"), val(sample_name) into count_input
-    file "*input*.count" into htseq_count_input, htseq_count_input_to_arrange
-    file "expression.matrix" into htseq_results
-
-    script:
-    println LikeletUtils.print_purple("Generate gene expression matrix by featureCounts and Rscript")
-    strand_info = params.stranded == "no" ? "0" : params.stranded == "reverse" ? "2" : "1"
-    reads_type = params.single_end ? "" : "-p"
-    minmqs = params.featurecount_minMQS
-    // """
-    // bash $baseDir/bin/htseq_count.sh $gtf $strand_info ${task.cpus}
-    // Rscript $baseDir/bin/get_htseq_matrix.R $formatted_designfile ${task.cpus} 
-    // """
-    """
-    for bam_file in *.input*.bam
-    do
-        featureCounts $reads_type -minMQS $minmqs -T ${task.cpus} -s $strand_info -a ${gtf} -o \${bam_file/%_sort*/}.txt \${bam_file};
-    done
-    Rscript $baseDir/bin/generate_featurecount_mat.R $formatted_designfile ${task.cpus} 
-    """ 
-}
-
-process DESeq2{
-    label 'analysis'
-    tag "$compare_str"
-
-    publishDir "${params.outdir}/expressionAnalysis/DESeq2", mode: 'link', overwrite: true
-
-    input:
-    file reads_count_input from htseq_count_input.collect()
-    file formatted_designfile from formatted_designfile.collect()
-    val compare_str from compareLines_for_DESeq2
-
-    output:
-    file "DESeq2*.csv" into deseq2_results
-    
-    when:
-    !params.skip_deseq2 && !params.skip_expression && params.comparefile
-    
-    script:
-    println LikeletUtils.print_purple("Differential expression analysis performed by DESeq2 ($compare_str)")
-    """
-    Rscript $baseDir/bin/DESeq2.R $formatted_designfile $compare_str
-    """ 
-}
-
-process EdgeR{
-    label 'analysis'
-    tag "$compare_str"
-    publishDir "${params.outdir}/expressionAnalysis/edgeR", mode: 'link', overwrite: true
-
-    input:
-    file reads_count_input from htseq_count_input.collect()
-    file formatted_designfile from formatted_designfile.collect()
-    val compare_str from compareLines_for_edgeR
-
-    output:
-    file "edgeR*.csv" into edgeR_results
-    
-    when:
-    !params.skip_edger && !params.skip_expression && params.comparefile
-
-    script:
-    println LikeletUtils.print_purple("Differential expression analysis performed by EdgeR ($compare_str)")
-    """
-    Rscript $baseDir/bin/edgeR.R $formatted_designfile $compare_str
-    """ 
-}
-
-/*
-========================================================================================
                         Step 6 Merge Peak AND Analysis
 ========================================================================================
 */
 /*
- * STEP 5-1 Merge Peak
+ * STEP 6-1 Merge Peak
 */
 
 Channel
@@ -1582,7 +1587,7 @@ process diffm6APeak{
     file bam_bai_file from diffpeak_bam.collect()
     file formatted_designfile from formatted_designfile.collect()
     file count_matrix from quantification_matrix.collect()
-    file exp_matrix from htseq_results.collect()
+    file exp_matrix from htseq_diffm6a_results.collect()
     file gtf
     val compare_str from compareLines_for_diffm6A
 
@@ -1668,7 +1673,7 @@ Channel
     .concat( quantification_results, motif_results_for_report, diffm6A_results, 
         htseq_count_input_to_arrange, 
         anno_for_diffreport, prediction_results, bed_collect_for_arrange_results,
-        multiqc_results, deseq2_results, edgeR_results, cufflinks_results
+        multiqc_results, deseq2_results, edgeR_results
     )
     .set{ results_arrange }
 
@@ -1901,10 +1906,10 @@ workflow.onComplete {
     }
 
     if (workflow.success) {
-        log.info "${c_purple}[nf-core/meripseqpipe]${c_green} Pipeline completed successfully${c_reset}"
+        log.info "${c_purple}[MeRIPseqPpipe]${c_green} Pipeline completed successfully${c_reset}"
     } else {
         checkHostname()
-        log.info "${c_purple}[nf-core/meripseqpipe]${c_red} Pipeline completed with errors${c_reset}"
+        log.info "${c_purple}[MeRIPseqPpipe]${c_red} Pipeline completed with errors${c_reset}"
     }
 
 }

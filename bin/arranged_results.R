@@ -6,8 +6,9 @@ args <- commandArgs(T)
 #args <- c("formatted_designfile.txt", "compare_info", "Wilcox-test", "edgeR", "rank")
 designfile <- args[1]#"formatted_designfile.txt"
 comparefile <- args[2]#"compare_info"
-diffm6A_mode <- args[3]#"QNB"
-rnaseq_mode <- args[4]#"DESeq2"
+aligner <- args[3] #star
+diffm6A_mode <- args[4]#"QNB"
+rnaseq_mode <- args[5]#"DESeq2"
 peakMerged_mode <- args[5]
 options(stringsAsFactors = F)
 
@@ -34,14 +35,15 @@ expression.matrix <- NULL
 diffexpression.list <- NULL
 if (rnaseq_mode != "none"){
   ## generate expression matrix
-  htseq.filelist = grep("htseq",list.files(path = "./",pattern = "input.count"), value = T)
-  for( file in htseq.filelist ){
-    tmp.expression.table <- as.matrix(read.table(file, sep = "\t", header = TRUE, row.names = 1, check.names=F))
-    expression.matrix <- cbind(expression.matrix, tmp.expression.table)
-  }
-  colnames(expression.matrix) <- as.matrix(lapply(strsplit(colnames(expression.matrix),".input"), function(x){ x[1]}))
+  #htseq.filelist = grep("featurecount",list.files(path = "./",pattern = "input.count"), value = T)
+  #for( file in htseq.filelist ){
+  #  tmp.expression.table <- as.matrix(read.table(file, sep = "\t", header = TRUE, row.names = 1, check.names=F))
+  #  expression.matrix <- cbind(expression.matrix, tmp.expression.table)
+  #}
+  #colnames(expression.matrix) <- as.matrix(lapply(strsplit(colnames(expression.matrix),".input"), function(x){ x[1]}))
   
   ## generate diff_expression list
+  expression.matrix <- read.table(paste0("expression.",aligner,".fpkm.matrix"), header = T, row.names = 1, check.names=F)
   diffexpression.filelist <- grep(rnaseq_mode,list.files(pattern = ".csv"), value = T)
   for( compare_str in compare.list ){
     diffexpression.list[[compare_str]] <- read.csv(grep(sub("_vs_","_",compare_str), diffexpression.filelist, value = T), header = T, check.names=F)

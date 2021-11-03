@@ -12,7 +12,7 @@ designtable <- read.csv(designfile,head = TRUE,stringsAsFactors=FALSE, colClasse
 # Running QNB quantification
 if(length(unique(designtable$Group)) < 2){
   stop( "The count of Group is less than two, please check your designfile.")
-}else if( compare_str == "two_group" ){
+}else if( compare_str == "two_groups" ){
   # Running QNB quantification without compare_str beacause of only two groups
   group_id_1 <- unique(designtable$Group)[1]
   group_id_2 <- unique(designtable$Group)[2]
