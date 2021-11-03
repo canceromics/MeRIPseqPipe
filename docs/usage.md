@@ -24,7 +24,7 @@ You only need [Nextflow](https://nf-co.re/usage/installation) (version >= 19.04.
 2. or let Nextflow do the pull
 
    ```shell
-   
+   nextflow pull canceromics/MeRIPseqPipe -r v1.0 --help
    ```
 
 ## Samplesheet input
