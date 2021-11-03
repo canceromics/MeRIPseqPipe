@@ -49,7 +49,6 @@ The MeRIPseqPipe documentation is split into the following files:
     * let us know if you need more customization!
 2. [Output](docs/output.md)
     * An overview of the different results produced by the pipeline
-3. [Troubleshooting](docs/troubleshooting.md)
 
 ## Credits
 
