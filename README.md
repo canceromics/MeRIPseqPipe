@@ -70,7 +70,7 @@ This pipeline is built using Nextflow and integrates tools as follows:
   * [MeTPeak](https://github.com/compgenomics/MeTPeak): a novel, graphical model-based peak-calling method
   * [MATK](http://matk.renlab.org/): a deep learning-based MeRIP-seq analysis tool at single-nucleotide-resolution
   * [Meyer](https://pubmed.ncbi.nlm.nih.gov/22608085/): a peak-calling tool based on Fisher's exact test
-8 **Peak merging**
+* **Peak merging**
   * [RobustRankAggreg](https://pubmed.ncbi.nlm.nih.gov/22247279/): a rank aggregation algorithm
   * [MSPC](https://genometric.github.io/MSPC/): using combined evidence from replicates to evaluate ChIP-seq peaks
   * [BEDTools](https://bedtools.readthedocs.io/en/latest/): using "mergeBed" and "intersectBed" function
