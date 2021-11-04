@@ -125,7 +125,7 @@ quadrant_plot <- function(quadrant.data, delfc = de_lfc , dmlfc = dm_lfc, pval =
                  aes_string(x= "exp" ,y="m6A", color="threshold"),size = 1.5)
 
 }
-matrixcluster <- function(matrixData, cluster_rows = TRUE, cluster_cols = TRUE, cmethod = cluster_meth){
+matrixcluster <- function(matrixData, cluster_rows = FALSE, cluster_cols = TRUE, cmethod = cluster_meth){
   if(cluster_rows == TRUE){
     ht <- hclust(dist(matrixData), method = cmethod)          #对行进行聚类
     rowInd <- ht$order                                       #将聚类后行的顺序存为rowInd 
@@ -175,7 +175,7 @@ for( group in as.character(compare.list) ){
   if (nrow(deg)<=1) deg = deres
   rownames(deg) = deg$ID
   de_mat = expression.matrix[row.names(deg),rownames(coldata)]
-  select <- deg[order(deg$log2FoldChange, decreasing = TRUE), ] 
+  select <- deg[order(deg$log2FoldChange, decreasing = TRUE),] 
   de_mat = log2(de_mat+1)
   de_mat = de_mat[rownames(select),]
   de_mat = na.omit(de_mat)
