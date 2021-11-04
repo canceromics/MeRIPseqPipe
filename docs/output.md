@@ -1,8 +1,8 @@
 # MeRIPseqPipe: Output
 
-This document describes the output produced by the pipeline. Most of the plots are taken from the MultiQC report, which summarises results at the end of the pipeline.
+This document describes the output produced by the pipeline.  
 
-<!-- TODO nf-core: Write this documentation describing your workflow's output -->
+The MeRIP-seq data for the illustration of MeRIPseqPipe was downloaded from GEO dataset: [GSE52662](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE52662) (*Mus musculus*) and [GSE52600](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE52600) (*Homo sapiens*), which was used to describe the dynamic m6A RNA modification during cell fate transition in mammalian embryonic stem cells.
 
 ## Pipeline overview
 
