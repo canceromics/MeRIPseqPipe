@@ -65,6 +65,9 @@ def helpMessage() {
       --mapq_cutoff                 [0-255] for filtering reads of different mapping quality
       --featurecount_minMQS         Integer giving the minimum mapping quality score a read must satisfy in order to be counted.
       --motiflength                 length for HOMER motif searching
+      --delfc                       the threshold values of differential gene filtering
+      --dmlfc                       the threshold values of differential peak filtering
+      --cluster_method              Hierarchical clustering method 
       --aligners                    "star" OR "bwa" OR "tophat2" OR "hisat2" OR "none","none" for bam files
       --expression_analysis_mode    "DESeq2" OR "edgeR" OR "none"
       --peakCalling_mode            "group" OR "independence" for MATK and MeTPeak
@@ -1671,7 +1674,7 @@ process SingleNucleotidePrediction{
 Channel
     .from()
     .concat( quantification_results, motif_results_for_report, diffm6A_results, 
-        htseq_count_input_to_arrange, 
+        htseq_results, 
         anno_for_diffreport, prediction_results, bed_collect_for_arrange_results,
         multiqc_results, deseq2_results, edgeR_results
     )
@@ -1708,8 +1711,8 @@ process DiffReport {
     else
         echo \$(awk 'BEGIN{FS=","}NR>1{print \$4}' $formatted_designfile |sort|uniq|awk 'NR==1{printf \$0"_vs_"}NR==2{print \$0}') > compare_info
     fi
-    Rscript $baseDir/bin/arranged_results.R $formatted_designfile compare_info $methylation_analysis_mode $expression_analysis_mode $peakMerged_mode
-    Rscript $baseDir/bin/DiffReport.R *.m6APipe $diffReportRData
+    Rscript $baseDir/bin/arranged_results.R $formatted_designfile compare_info $params.aligners $methylation_analysis_mode $expression_analysis_mode $peakMerged_mode
+    Rscript $baseDir/bin/DiffReport.R *.m6APipe $diffReportRData $params.delfc $params.dmlfc $params.cluster_method
     R -e "load(\\"$diffReportRData\\");rmarkdown::render('DiffReport.rmd',output_file='DiffReport_${peakMerged_mode}_${methylation_analysis_mode}_${expression_analysis_mode}.html')"
     rm Rplots.pdf
     """
