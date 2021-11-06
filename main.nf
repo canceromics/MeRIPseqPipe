@@ -1037,7 +1037,7 @@ process multiqc{
     publishDir "${params.outdir}/Report/QCReadsReport" , mode: 'link', overwrite: true
     
     when:
-    !params.skip_qc
+    !params.skip_qc && !params.skip_multiqc
 
     input:
     file arranged_qc from arranged_qc.collect()
