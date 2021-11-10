@@ -1,0 +1,9 @@
+Sample	command
+SRR1207291	fastp -i SRR1207291.fastq.gz -o SRR1207291_aligners.fastq.gz -j SRR1207291_fastp.json -h SRR1207291_fastp.html -w 20 
+SRR1207292	fastp -i SRR1207292.fastq.gz -o SRR1207292_aligners.fastq.gz -j SRR1207292_fastp.json -h SRR1207292_fastp.html -w 20 
+SRR1207293	fastp -i SRR1207293.fastq.gz -o SRR1207293_aligners.fastq.gz -j SRR1207293_fastp.json -h SRR1207293_fastp.html -w 20 
+SRR1207294	fastp -i SRR1207294.fastq.gz -o SRR1207294_aligners.fastq.gz -j SRR1207294_fastp.json -h SRR1207294_fastp.html -w 20 
+SRR1207295	fastp -i SRR1207295.fastq.gz -o SRR1207295_aligners.fastq.gz -j SRR1207295_fastp.json -h SRR1207295_fastp.html -w 20 
+SRR1207296	fastp -i SRR1207296.fastq.gz -o SRR1207296_aligners.fastq.gz -j SRR1207296_fastp.json -h SRR1207296_fastp.html -w 20 
+SRR1207297	fastp -i SRR1207297.fastq.gz -o SRR1207297_aligners.fastq.gz -j SRR1207297_fastp.json -h SRR1207297_fastp.html -w 20 
+SRR1207298	fastp -i SRR1207298.fastq.gz -o SRR1207298_aligners.fastq.gz -j SRR1207298_fastp.json -h SRR1207298_fastp.html -w 20 

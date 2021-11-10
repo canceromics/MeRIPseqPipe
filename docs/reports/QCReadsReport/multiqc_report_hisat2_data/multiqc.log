@@ -1,0 +1,222 @@
+[2021-11-09 06:05:34,212] multiqc                                            [DEBUG  ]  No MultiQC config found: /opt/conda/envs/multiqc/lib/python3.7/site-packages/multiqc_config.yaml
+[2021-11-09 06:05:34,212] multiqc                                            [DEBUG  ]  No MultiQC config found: /.multiqc_config.yaml
+[2021-11-09 06:05:34,212] multiqc                                            [DEBUG  ]  No MultiQC config found: multiqc_config.yaml
+[2021-11-09 06:05:34,212] multiqc                                            [DEBUG  ]  Command used: /opt/conda/envs/multiqc/bin/multiqc -n multiqc_report_hisat2 .
+[2021-11-09 06:05:42,726] multiqc                                            [DEBUG  ]  Could not connect to multiqc.info for version check: The read operation timed out
+[2021-11-09 06:05:42,729] multiqc                                            [INFO   ]  This is MultiQC v1.7
+[2021-11-09 06:05:42,730] multiqc                                            [DEBUG  ]  Command     : /opt/conda/envs/multiqc/bin/multiqc -n multiqc_report_hisat2 .
+[2021-11-09 06:05:42,730] multiqc                                            [DEBUG  ]  Working dir : /data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74
+[2021-11-09 06:05:42,730] multiqc                                            [INFO   ]  Template    : default
+[2021-11-09 06:05:42,730] multiqc                                            [INFO   ]  Searching '.'
+[2021-11-09 06:05:42,731] multiqc                                            [DEBUG  ]  Analysing modules: custom_content, conpair, peddy, methylQA, phantompeakqualtools, qualimap, preseq, quast, qorts, rna_seqc, rsem, rseqc, busco, goleft_indexcov, disambiguate, supernova, deeptools, sargasso, verifybamid, mirtrace, happy, homer, macs2, theta2, snpeff, gatk, htseq, bcftools, featureCounts, dedup, damageprofiler, picard, prokka, samblaster, samtools, bamtools, jellyfish, vcftools, longranger, stacks, bbmap, bismark, biscuit, hicexplorer, hicup, hicpro, salmon, kallisto, slamdunk, star, hisat2, tophat, bowtie2, bowtie1, kat, leehom, adapterRemoval, clipandmerge, cutadapt, flexbar, trimmomatic, skewer, sortmerna, biobloomtools, fastq_screen, afterqc, fastp, fastqc, minionqc, clusterflow, bcl2fastq, interop, flash
+[2021-11-09 06:05:42,732] multiqc                                            [DEBUG  ]  Using temporary directory for creating report: /tmp/tmp4d7x05bs
+[2021-11-09 06:05:42,953] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: KO2.input_METTL3_KO.rseqc.junctionSaturation_plot.pdf
+[2021-11-09 06:05:42,953] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207296_aligners_fastqc.html
+[2021-11-09 06:05:42,953] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207292_aligners.fastq.gz
+[2021-11-09 06:05:43,672] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: WT1.ip_WT.rseqc.junction.bed
+[2021-11-09 06:05:43,672] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: KO2.ip_METTL3_KO.rseqc.junctionSaturation_plot.pdf
+[2021-11-09 06:05:43,672] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: WT2.input_WT.read_duplication.DupRate_plot.pdf
+[2021-11-09 06:05:43,690] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: KO2.input_METTL3_KO.read_duplication.DupRate_plot.pdf
+[2021-11-09 06:05:43,720] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: KO1.ip_METTL3_KO.read_duplication.DupRate_plot.pdf
+[2021-11-09 06:05:43,720] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: WT2.ip_WT.rseqc.junctionSaturation_plot.pdf
+[2021-11-09 06:05:43,731] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207297_aligners.fastq.gz
+[2021-11-09 06:05:43,732] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207297_fastp.html
+[2021-11-09 06:05:43,732] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: WT1.ip_WT.rseqc.junctionSaturation_plot.pdf
+[2021-11-09 06:05:43,742] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: KO1.ip_METTL3_KO.rseqc.junctionSaturation_plot.pdf
+[2021-11-09 06:05:43,778] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: KO2.input_METTL3_KO.rseqc.splice_events.pdf
+[2021-11-09 06:05:43,778] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: WT2.ip_WT.rseqc.junction.bed
+[2021-11-09 06:05:43,778] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: KO2.input_METTL3_KO.rseqc.splice_junction.pdf
+[2021-11-09 06:05:43,778] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207295_aligners_fastqc.html
+[2021-11-09 06:05:43,778] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: KO1.ip_METTL3_KO.rseqc.splice_events.pdf
+[2021-11-09 06:05:43,778] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: KO2.ip_METTL3_KO.rseqc.splice_junction.pdf
+[2021-11-09 06:05:46,204] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207295_aligners.fastq.gz
+[2021-11-09 06:05:46,210] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: WT2.ip_WT.rseqc.splice_events.pdf
+[2021-11-09 06:05:46,210] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207291_aligners.fastq.gz
+[2021-11-09 06:05:46,215] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: KO1.input_METTL3_KO.rseqc.junction.bed
+[2021-11-09 06:05:49,005] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207292_fastp.html
+[2021-11-09 06:05:49,005] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: WT2.ip_WT.read_duplication.DupRate_plot.pdf
+[2021-11-09 06:05:49,005] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207298_aligners.fastq.gz
+[2021-11-09 06:05:49,005] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: WT1.input_WT.rseqc.junction.bed
+[2021-11-09 06:05:49,022] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: WT1.input_WT.rseqc.splice_events.pdf
+[2021-11-09 06:05:49,049] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207293_fastp.html
+[2021-11-09 06:05:49,053] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207295_fastp.html
+[2021-11-09 06:05:49,071] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: WT1.ip_WT.read_duplication.DupRate_plot.pdf
+[2021-11-09 06:05:49,073] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207291_aligners_fastqc.html
+[2021-11-09 06:05:49,087] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: KO1.ip_METTL3_KO.rseqc.junction.bed
+[2021-11-09 06:05:49,087] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: WT2.input_WT.rseqc.splice_junction.pdf
+[2021-11-09 06:05:49,091] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: KO1.input_METTL3_KO.rseqc.junctionSaturation_plot.pdf
+[2021-11-09 06:05:49,096] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207293_aligners_fastqc.html
+[2021-11-09 06:05:49,098] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207292_aligners_fastqc.html
+[2021-11-09 06:05:49,103] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: KO2.ip_METTL3_KO.read_duplication.DupRate_plot.pdf
+[2021-11-09 06:05:51,959] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207293_aligners.fastq.gz
+[2021-11-09 06:05:51,959] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207294_aligners_fastqc.html
+[2021-11-09 06:05:51,983] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207296_fastp.html
+[2021-11-09 06:05:51,987] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: WT1.input_WT.rseqc.junctionSaturation_plot.pdf
+[2021-11-09 06:05:51,991] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: WT2.input_WT.rseqc.junctionSaturation_plot.pdf
+[2021-11-09 06:05:51,992] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207296_aligners.fastq.gz
+[2021-11-09 06:05:52,766] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: WT2.input_WT.rseqc.junction.bed
+[2021-11-09 06:05:52,772] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: WT1.input_WT.read_duplication.DupRate_plot.pdf
+[2021-11-09 06:05:52,773] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: KO1.input_METTL3_KO.read_duplication.DupRate_plot.pdf
+[2021-11-09 06:05:53,715] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: WT1.input_WT.rseqc.splice_junction.pdf
+[2021-11-09 06:05:53,715] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: KO2.ip_METTL3_KO.rseqc.splice_events.pdf
+[2021-11-09 06:05:53,724] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: KO2.input_METTL3_KO.rseqc.junction.bed
+[2021-11-09 06:05:53,734] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: WT1.ip_WT.rseqc.splice_events.pdf
+[2021-11-09 06:05:53,734] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: KO1.ip_METTL3_KO.rseqc.splice_junction.pdf
+[2021-11-09 06:05:53,739] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207298_fastp.html
+[2021-11-09 06:05:53,741] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: KO1.input_METTL3_KO.rseqc.splice_events.pdf
+[2021-11-09 06:05:53,742] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: KO1.input_METTL3_KO.rseqc.splice_junction.pdf
+[2021-11-09 06:05:53,753] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: WT1.ip_WT.rseqc.splice_junction.pdf
+[2021-11-09 06:05:56,572] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: WT2.input_WT.rseqc.splice_events.pdf
+[2021-11-09 06:05:56,572] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207291_fastp.html
+[2021-11-09 06:05:56,574] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: WT2.ip_WT.rseqc.splice_junction.pdf
+[2021-11-09 06:05:56,577] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: KO2.ip_METTL3_KO.rseqc.junction.bed
+[2021-11-09 06:05:58,133] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207294_fastp.html
+[2021-11-09 06:05:58,134] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207294_aligners.fastq.gz
+[2021-11-09 06:05:58,134] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207298_aligners_fastqc.html
+[2021-11-09 06:05:58,135] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: SRR1207297_aligners_fastqc.html
+[2021-11-09 06:05:58,947] multiqc                                            [DEBUG  ]  No samples found: custom_content
+[2021-11-09 06:05:58,952] multiqc                                            [DEBUG  ]  No samples found: conpair
+[2021-11-09 06:05:58,956] multiqc                                            [DEBUG  ]  No samples found: peddy
+[2021-11-09 06:05:58,960] multiqc                                            [DEBUG  ]  No samples found: methylQA
+[2021-11-09 06:05:58,964] multiqc                                            [DEBUG  ]  No samples found: phantompeakqualtools
+[2021-11-09 06:05:58,970] multiqc                                            [DEBUG  ]  No samples found: qualimap
+[2021-11-09 06:05:58,980] multiqc                                            [DEBUG  ]  No samples found: preseq
+[2021-11-09 06:05:58,984] multiqc                                            [DEBUG  ]  No samples found: quast
+[2021-11-09 06:05:58,988] multiqc                                            [DEBUG  ]  No samples found: qorts
+[2021-11-09 06:05:58,992] multiqc                                            [DEBUG  ]  No samples found: rna_seqc
+[2021-11-09 06:05:58,996] multiqc                                            [DEBUG  ]  No samples found: rsem
+[2021-11-09 06:05:59,013] multiqc.modules.rseqc.rseqc                        [INFO   ]  Found 8 read_distribution reports
+[2021-11-09 06:05:59,024] multiqc.modules.rseqc.rseqc                        [INFO   ]  Found 8 read_duplication reports
+[2021-11-09 06:05:59,030] multiqc.modules.rseqc.rseqc                        [INFO   ]  Found 8 junction_saturation reports
+[2021-11-09 06:05:59,033] multiqc.modules.rseqc.rseqc                        [INFO   ]  Found 8 infer_experiment reports
+[2021-11-09 06:05:59,039] multiqc.modules.rseqc.rseqc                        [INFO   ]  Found 8 bam_stat reports
+[2021-11-09 06:05:59,043] multiqc                                            [DEBUG  ]  No samples found: busco
+[2021-11-09 06:05:59,047] multiqc                                            [DEBUG  ]  No samples found: goleft_indexcov
+[2021-11-09 06:05:59,051] multiqc                                            [DEBUG  ]  No samples found: disambiguate
+[2021-11-09 06:05:59,056] multiqc                                            [DEBUG  ]  No samples found: supernova
+[2021-11-09 06:05:59,063] multiqc                                            [DEBUG  ]  No samples found: deeptools
+[2021-11-09 06:05:59,067] multiqc                                            [DEBUG  ]  No samples found: sargasso
+[2021-11-09 06:05:59,071] multiqc                                            [DEBUG  ]  No samples found: verifybamid
+[2021-11-09 06:05:59,076] multiqc                                            [DEBUG  ]  No samples found: mirtrace
+[2021-11-09 06:05:59,080] multiqc                                            [DEBUG  ]  No samples found: happy
+[2021-11-09 06:05:59,085] multiqc                                            [DEBUG  ]  No samples found: homer
+[2021-11-09 06:05:59,089] multiqc                                            [DEBUG  ]  No samples found: macs2
+[2021-11-09 06:05:59,093] multiqc                                            [DEBUG  ]  No samples found: theta2
+[2021-11-09 06:05:59,097] multiqc                                            [DEBUG  ]  No samples found: snpeff
+[2021-11-09 06:05:59,103] multiqc                                            [DEBUG  ]  No samples found: gatk
+[2021-11-09 06:05:59,107] multiqc                                            [DEBUG  ]  No samples found: htseq
+[2021-11-09 06:05:59,112] multiqc                                            [DEBUG  ]  No samples found: bcftools
+[2021-11-09 06:05:59,116] multiqc                                            [DEBUG  ]  No samples found: featureCounts
+[2021-11-09 06:05:59,120] multiqc                                            [DEBUG  ]  No samples found: dedup
+[2021-11-09 06:05:59,124] multiqc                                            [DEBUG  ]  No samples found: damageprofiler
+[2021-11-09 06:05:59,157] multiqc                                            [DEBUG  ]  No samples found: picard
+[2021-11-09 06:05:59,164] multiqc                                            [DEBUG  ]  No samples found: prokka
+[2021-11-09 06:05:59,171] multiqc                                            [DEBUG  ]  No samples found: samblaster
+[2021-11-09 06:05:59,180] multiqc                                            [DEBUG  ]  No samples found: samtools
+[2021-11-09 06:05:59,187] multiqc                                            [DEBUG  ]  No samples found: bamtools
+[2021-11-09 06:05:59,195] multiqc                                            [DEBUG  ]  No samples found: jellyfish
+[2021-11-09 06:05:59,209] multiqc                                            [DEBUG  ]  No samples found: vcftools
+[2021-11-09 06:05:59,217] multiqc                                            [DEBUG  ]  No samples found: longranger
+[2021-11-09 06:05:59,225] multiqc                                            [DEBUG  ]  No samples found: stacks
+[2021-11-09 06:05:59,242] multiqc                                            [DEBUG  ]  No samples found: bbmap
+[2021-11-09 06:05:59,251] multiqc                                            [DEBUG  ]  No samples found: bismark
+[2021-11-09 06:05:59,260] multiqc                                            [DEBUG  ]  No samples found: biscuit
+[2021-11-09 06:05:59,265] multiqc                                            [DEBUG  ]  No samples found: hicexplorer
+[2021-11-09 06:05:59,269] multiqc                                            [DEBUG  ]  No samples found: hicup
+[2021-11-09 06:05:59,273] multiqc                                            [DEBUG  ]  No samples found: hicpro
+[2021-11-09 06:05:59,277] multiqc                                            [DEBUG  ]  No samples found: salmon
+[2021-11-09 06:05:59,281] multiqc                                            [DEBUG  ]  No samples found: kallisto
+[2021-11-09 06:05:59,285] multiqc                                            [DEBUG  ]  No samples found: slamdunk
+[2021-11-09 06:05:59,289] multiqc                                            [DEBUG  ]  No samples found: star
+[2021-11-09 06:05:59,294] multiqc                                            [DEBUG  ]  No samples found: hisat2
+[2021-11-09 06:05:59,298] multiqc                                            [DEBUG  ]  No samples found: tophat
+[2021-11-09 06:05:59,305] multiqc.modules.bowtie2.bowtie2                    [INFO   ]  Found 8 reports
+[2021-11-09 06:05:59,311] multiqc                                            [DEBUG  ]  No samples found: bowtie1
+[2021-11-09 06:05:59,315] multiqc                                            [DEBUG  ]  No samples found: kat
+[2021-11-09 06:05:59,319] multiqc                                            [DEBUG  ]  No samples found: leehom
+[2021-11-09 06:05:59,323] multiqc                                            [DEBUG  ]  No samples found: adapterRemoval
+[2021-11-09 06:05:59,327] multiqc                                            [DEBUG  ]  No samples found: clipandmerge
+[2021-11-09 06:05:59,331] multiqc                                            [DEBUG  ]  No samples found: cutadapt
+[2021-11-09 06:05:59,335] multiqc                                            [DEBUG  ]  No samples found: flexbar
+[2021-11-09 06:05:59,339] multiqc                                            [DEBUG  ]  No samples found: trimmomatic
+[2021-11-09 06:05:59,343] multiqc                                            [DEBUG  ]  No samples found: skewer
+[2021-11-09 06:05:59,346] multiqc                                            [DEBUG  ]  No samples found: sortmerna
+[2021-11-09 06:05:59,350] multiqc                                            [DEBUG  ]  No samples found: biobloomtools
+[2021-11-09 06:05:59,353] multiqc                                            [DEBUG  ]  No samples found: fastq_screen
+[2021-11-09 06:05:59,356] multiqc                                            [DEBUG  ]  No samples found: afterqc
+[2021-11-09 06:05:59,360] multiqc.modules.fastp.fastp                        [DEBUG  ]  fastp JSON did not have a 'adapter_cutting' key, skipping: 'SRR1207292_fastp.json'
+[2021-11-09 06:05:59,360] multiqc.modules.fastp.fastp                        [DEBUG  ]  Could not calculate 'pct_adapter': SRR1207292_fastp.json
+[2021-11-09 06:05:59,361] multiqc.modules.fastp.fastp                        [DEBUG  ]  No insert size plot data: SRR1207292_fastp.json
+[2021-11-09 06:05:59,361] multiqc.modules.fastp.fastp                        [DEBUG  ]  Read quality read2_before_filtering not found: SRR1207292_fastp.json
+[2021-11-09 06:05:59,361] multiqc.modules.fastp.fastp                        [DEBUG  ]  Content curve data read2_before_filtering not found: SRR1207292_fastp.json
+[2021-11-09 06:05:59,361] multiqc.modules.fastp.fastp                        [DEBUG  ]  Read quality read2_after_filtering not found: SRR1207292_fastp.json
+[2021-11-09 06:05:59,361] multiqc.modules.fastp.fastp                        [DEBUG  ]  Content curve data read2_after_filtering not found: SRR1207292_fastp.json
+[2021-11-09 06:05:59,362] multiqc.modules.fastp.fastp                        [DEBUG  ]  fastp JSON did not have a 'adapter_cutting' key, skipping: 'SRR1207295_fastp.json'
+[2021-11-09 06:05:59,362] multiqc.modules.fastp.fastp                        [DEBUG  ]  Could not calculate 'pct_adapter': SRR1207295_fastp.json
+[2021-11-09 06:05:59,362] multiqc.modules.fastp.fastp                        [DEBUG  ]  No insert size plot data: SRR1207295_fastp.json
+[2021-11-09 06:05:59,362] multiqc.modules.fastp.fastp                        [DEBUG  ]  Read quality read2_before_filtering not found: SRR1207295_fastp.json
+[2021-11-09 06:05:59,362] multiqc.modules.fastp.fastp                        [DEBUG  ]  Content curve data read2_before_filtering not found: SRR1207295_fastp.json
+[2021-11-09 06:05:59,362] multiqc.modules.fastp.fastp                        [DEBUG  ]  Read quality read2_after_filtering not found: SRR1207295_fastp.json
+[2021-11-09 06:05:59,362] multiqc.modules.fastp.fastp                        [DEBUG  ]  Content curve data read2_after_filtering not found: SRR1207295_fastp.json
+[2021-11-09 06:05:59,364] multiqc.modules.fastp.fastp                        [DEBUG  ]  fastp JSON did not have a 'adapter_cutting' key, skipping: 'SRR1207293_fastp.json'
+[2021-11-09 06:05:59,364] multiqc.modules.fastp.fastp                        [DEBUG  ]  Could not calculate 'pct_adapter': SRR1207293_fastp.json
+[2021-11-09 06:05:59,364] multiqc.modules.fastp.fastp                        [DEBUG  ]  No insert size plot data: SRR1207293_fastp.json
+[2021-11-09 06:05:59,364] multiqc.modules.fastp.fastp                        [DEBUG  ]  Read quality read2_before_filtering not found: SRR1207293_fastp.json
+[2021-11-09 06:05:59,364] multiqc.modules.fastp.fastp                        [DEBUG  ]  Content curve data read2_before_filtering not found: SRR1207293_fastp.json
+[2021-11-09 06:05:59,364] multiqc.modules.fastp.fastp                        [DEBUG  ]  Read quality read2_after_filtering not found: SRR1207293_fastp.json
+[2021-11-09 06:05:59,364] multiqc.modules.fastp.fastp                        [DEBUG  ]  Content curve data read2_after_filtering not found: SRR1207293_fastp.json
+[2021-11-09 06:05:59,365] multiqc.modules.fastp.fastp                        [DEBUG  ]  fastp JSON did not have a 'adapter_cutting' key, skipping: 'SRR1207291_fastp.json'
+[2021-11-09 06:05:59,365] multiqc.modules.fastp.fastp                        [DEBUG  ]  Could not calculate 'pct_adapter': SRR1207291_fastp.json
+[2021-11-09 06:05:59,365] multiqc.modules.fastp.fastp                        [DEBUG  ]  No insert size plot data: SRR1207291_fastp.json
+[2021-11-09 06:05:59,365] multiqc.modules.fastp.fastp                        [DEBUG  ]  Read quality read2_before_filtering not found: SRR1207291_fastp.json
+[2021-11-09 06:05:59,365] multiqc.modules.fastp.fastp                        [DEBUG  ]  Content curve data read2_before_filtering not found: SRR1207291_fastp.json
+[2021-11-09 06:05:59,366] multiqc.modules.fastp.fastp                        [DEBUG  ]  Read quality read2_after_filtering not found: SRR1207291_fastp.json
+[2021-11-09 06:05:59,366] multiqc.modules.fastp.fastp                        [DEBUG  ]  Content curve data read2_after_filtering not found: SRR1207291_fastp.json
+[2021-11-09 06:05:59,367] multiqc.modules.fastp.fastp                        [DEBUG  ]  fastp JSON did not have a 'adapter_cutting' key, skipping: 'SRR1207297_fastp.json'
+[2021-11-09 06:05:59,367] multiqc.modules.fastp.fastp                        [DEBUG  ]  Could not calculate 'pct_adapter': SRR1207297_fastp.json
+[2021-11-09 06:05:59,367] multiqc.modules.fastp.fastp                        [DEBUG  ]  No insert size plot data: SRR1207297_fastp.json
+[2021-11-09 06:05:59,367] multiqc.modules.fastp.fastp                        [DEBUG  ]  Read quality read2_before_filtering not found: SRR1207297_fastp.json
+[2021-11-09 06:05:59,367] multiqc.modules.fastp.fastp                        [DEBUG  ]  Content curve data read2_before_filtering not found: SRR1207297_fastp.json
+[2021-11-09 06:05:59,367] multiqc.modules.fastp.fastp                        [DEBUG  ]  Read quality read2_after_filtering not found: SRR1207297_fastp.json
+[2021-11-09 06:05:59,367] multiqc.modules.fastp.fastp                        [DEBUG  ]  Content curve data read2_after_filtering not found: SRR1207297_fastp.json
+[2021-11-09 06:05:59,368] multiqc.modules.fastp.fastp                        [DEBUG  ]  fastp JSON did not have a 'adapter_cutting' key, skipping: 'SRR1207294_fastp.json'
+[2021-11-09 06:05:59,368] multiqc.modules.fastp.fastp                        [DEBUG  ]  Could not calculate 'pct_adapter': SRR1207294_fastp.json
+[2021-11-09 06:05:59,368] multiqc.modules.fastp.fastp                        [DEBUG  ]  No insert size plot data: SRR1207294_fastp.json
+[2021-11-09 06:05:59,369] multiqc.modules.fastp.fastp                        [DEBUG  ]  Read quality read2_before_filtering not found: SRR1207294_fastp.json
+[2021-11-09 06:05:59,369] multiqc.modules.fastp.fastp                        [DEBUG  ]  Content curve data read2_before_filtering not found: SRR1207294_fastp.json
+[2021-11-09 06:05:59,369] multiqc.modules.fastp.fastp                        [DEBUG  ]  Read quality read2_after_filtering not found: SRR1207294_fastp.json
+[2021-11-09 06:05:59,369] multiqc.modules.fastp.fastp                        [DEBUG  ]  Content curve data read2_after_filtering not found: SRR1207294_fastp.json
+[2021-11-09 06:05:59,370] multiqc.modules.fastp.fastp                        [DEBUG  ]  fastp JSON did not have a 'adapter_cutting' key, skipping: 'SRR1207296_fastp.json'
+[2021-11-09 06:05:59,370] multiqc.modules.fastp.fastp                        [DEBUG  ]  Could not calculate 'pct_adapter': SRR1207296_fastp.json
+[2021-11-09 06:05:59,370] multiqc.modules.fastp.fastp                        [DEBUG  ]  No insert size plot data: SRR1207296_fastp.json
+[2021-11-09 06:05:59,370] multiqc.modules.fastp.fastp                        [DEBUG  ]  Read quality read2_before_filtering not found: SRR1207296_fastp.json
+[2021-11-09 06:05:59,370] multiqc.modules.fastp.fastp                        [DEBUG  ]  Content curve data read2_before_filtering not found: SRR1207296_fastp.json
+[2021-11-09 06:05:59,370] multiqc.modules.fastp.fastp                        [DEBUG  ]  Read quality read2_after_filtering not found: SRR1207296_fastp.json
+[2021-11-09 06:05:59,370] multiqc.modules.fastp.fastp                        [DEBUG  ]  Content curve data read2_after_filtering not found: SRR1207296_fastp.json
+[2021-11-09 06:05:59,371] multiqc.modules.fastp.fastp                        [DEBUG  ]  fastp JSON did not have a 'adapter_cutting' key, skipping: 'SRR1207298_fastp.json'
+[2021-11-09 06:05:59,371] multiqc.modules.fastp.fastp                        [DEBUG  ]  Could not calculate 'pct_adapter': SRR1207298_fastp.json
+[2021-11-09 06:05:59,372] multiqc.modules.fastp.fastp                        [DEBUG  ]  No insert size plot data: SRR1207298_fastp.json
+[2021-11-09 06:05:59,372] multiqc.modules.fastp.fastp                        [DEBUG  ]  Read quality read2_before_filtering not found: SRR1207298_fastp.json
+[2021-11-09 06:05:59,372] multiqc.modules.fastp.fastp                        [DEBUG  ]  Content curve data read2_before_filtering not found: SRR1207298_fastp.json
+[2021-11-09 06:05:59,372] multiqc.modules.fastp.fastp                        [DEBUG  ]  Read quality read2_after_filtering not found: SRR1207298_fastp.json
+[2021-11-09 06:05:59,372] multiqc.modules.fastp.fastp                        [DEBUG  ]  Content curve data read2_after_filtering not found: SRR1207298_fastp.json
+[2021-11-09 06:05:59,372] multiqc.modules.fastp.fastp                        [INFO   ]  Found 8 reports
+[2021-11-09 06:05:59,478] multiqc.modules.fastqc.fastqc                      [INFO   ]  Found 8 reports
+[2021-11-09 06:05:59,561] multiqc                                            [DEBUG  ]  No samples found: minionqc
+[2021-11-09 06:05:59,564] multiqc                                            [DEBUG  ]  No samples found: clusterflow
+[2021-11-09 06:05:59,568] multiqc                                            [DEBUG  ]  No samples found: bcl2fastq
+[2021-11-09 06:05:59,571] multiqc                                            [DEBUG  ]  No samples found: interop
+[2021-11-09 06:05:59,574] multiqc                                            [DEBUG  ]  No samples found: flash
+[2021-11-09 06:05:59,594] multiqc                                            [INFO   ]  Compressing plot data
+[2021-11-09 06:05:59,942] multiqc                                            [INFO   ]  Report      : multiqc_report_hisat2.html
+[2021-11-09 06:05:59,942] multiqc                                            [INFO   ]  Data        : multiqc_report_hisat2_data
+[2021-11-09 06:05:59,943] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmp4d7x05bs/multiqc_data/multiqc_general_stats.txt' to '/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/multiqc_report_hisat2_data'
+[2021-11-09 06:05:59,943] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmp4d7x05bs/multiqc_data/multiqc_bowtie2.txt' to '/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/multiqc_report_hisat2_data'
+[2021-11-09 06:05:59,943] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmp4d7x05bs/multiqc_data/multiqc_fastqc.txt' to '/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/multiqc_report_hisat2_data'
+[2021-11-09 06:05:59,943] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmp4d7x05bs/multiqc_data/multiqc_rseqc_bam_stat.txt' to '/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/multiqc_report_hisat2_data'
+[2021-11-09 06:05:59,944] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmp4d7x05bs/multiqc_data/multiqc_rseqc_read_distribution.txt' to '/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/multiqc_report_hisat2_data'
+[2021-11-09 06:05:59,944] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmp4d7x05bs/multiqc_data/multiqc_data.json' to '/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/multiqc_report_hisat2_data'
+[2021-11-09 06:05:59,947] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmp4d7x05bs/multiqc_data/multiqc_sources.txt' to '/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/multiqc_report_hisat2_data'
+[2021-11-09 06:05:59,947] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmp4d7x05bs/multiqc_data/multiqc_rseqc_infer_experiment.txt' to '/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/multiqc_report_hisat2_data'
+[2021-11-09 06:05:59,947] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmp4d7x05bs/multiqc_data/multiqc_fastp.txt' to '/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/multiqc_report_hisat2_data'
+[2021-11-09 06:06:00,041] multiqc                                            [INFO   ]  MultiQC complete

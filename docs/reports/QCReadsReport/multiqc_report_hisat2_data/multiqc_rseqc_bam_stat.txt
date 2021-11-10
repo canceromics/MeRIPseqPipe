@@ -1,0 +1,9 @@
+Sample	total_records	qc_failed	optical_pcr_duplicate	non_primary_hits	unmapped_reads	mapq_lt_mapq_cut_non-unique	mapq_gte_mapq_cut_unique	read_1	read_2	reads_map_to_sense	reads_map_to_antisense	non-splice_reads	splice_reads	reads_mapped_in_proper_pairs	proper-paired_reads_map_to_different_chrom	unique_percent	proper_pairs_percent
+KO1.input_METTL3_KO	20920363	0	0	0	0	0	20920363	0	0	10254802	10665561	16337701	4582662	0	0	100.0	0.0
+KO1.ip_METTL3_KO	2893678	0	0	0	0	0	2893678	0	0	1377219	1516459	2624127	269551	0	0	100.0	0.0
+KO2.input_METTL3_KO	11728710	0	0	0	0	0	11728710	0	0	5808505	5920205	9164460	2564250	0	0	100.0	0.0
+KO2.ip_METTL3_KO	3088380	0	0	0	0	0	3088380	0	0	1509793	1578587	2809890	278490	0	0	100.0	0.0
+WT1.input_WT	18457664	0	0	0	0	0	18457664	0	0	9069952	9387712	14342534	4115130	0	0	100.0	0.0
+WT1.ip_WT	7760325	0	0	0	0	0	7760325	0	0	3749178	4011147	7123818	636507	0	0	100.0	0.0
+WT2.input_WT	18507855	0	0	0	0	0	18507855	0	0	9070178	9437677	14378140	4129715	0	0	100.0	0.0
+WT2.ip_WT	3427111	0	0	0	0	0	3427111	0	0	1658816	1768295	3184286	242825	0	0	100.0	0.0

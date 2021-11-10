@@ -1,0 +1,73 @@
+Module	Section	Sample Name	Source
+RSeQC	read_distribution	KO2.input_METTL3_KO.read_distribution	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO2.input_METTL3_KO.read_distribution.txt
+RSeQC	read_distribution	KO2.ip_METTL3_KO.read_distribution	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO2.ip_METTL3_KO.read_distribution.txt
+RSeQC	read_distribution	KO1.ip_METTL3_KO.read_distribution	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO1.ip_METTL3_KO.read_distribution.txt
+RSeQC	read_distribution	WT2.input_WT.read_distribution	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT2.input_WT.read_distribution.txt
+RSeQC	read_distribution	KO1.input_METTL3_KO.read_distribution	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO1.input_METTL3_KO.read_distribution.txt
+RSeQC	read_distribution	WT1.input_WT.read_distribution	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT1.input_WT.read_distribution.txt
+RSeQC	read_distribution	WT2.ip_WT.read_distribution	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT2.ip_WT.read_distribution.txt
+RSeQC	read_distribution	WT1.ip_WT.read_distribution	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT1.ip_WT.read_distribution.txt
+RSeQC	inner_distance	WT1.ip_WT.rseqc	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT1.ip_WT.rseqc.inner_distance_freq.txt
+RSeQC	inner_distance	KO2.input_METTL3_KO.rseqc	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO2.input_METTL3_KO.rseqc.inner_distance_freq.txt
+RSeQC	inner_distance	WT1.input_WT.rseqc	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT1.input_WT.rseqc.inner_distance_freq.txt
+RSeQC	inner_distance	KO1.input_METTL3_KO.rseqc	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO1.input_METTL3_KO.rseqc.inner_distance_freq.txt
+RSeQC	inner_distance	WT2.ip_WT.rseqc	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT2.ip_WT.rseqc.inner_distance_freq.txt
+RSeQC	inner_distance	WT2.input_WT.rseqc	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT2.input_WT.rseqc.inner_distance_freq.txt
+RSeQC	inner_distance	KO2.ip_METTL3_KO.rseqc	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO2.ip_METTL3_KO.rseqc.inner_distance_freq.txt
+RSeQC	inner_distance	KO1.ip_METTL3_KO.rseqc	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO1.ip_METTL3_KO.rseqc.inner_distance_freq.txt
+RSeQC	read_duplication	KO1.ip_METTL3_KO.read_duplication	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO1.ip_METTL3_KO.read_duplication.pos.DupRate.xls
+RSeQC	read_duplication	WT2.ip_WT.read_duplication	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT2.ip_WT.read_duplication.pos.DupRate.xls
+RSeQC	read_duplication	WT1.input_WT.read_duplication	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT1.input_WT.read_duplication.pos.DupRate.xls
+RSeQC	read_duplication	WT1.ip_WT.read_duplication	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT1.ip_WT.read_duplication.pos.DupRate.xls
+RSeQC	read_duplication	KO2.ip_METTL3_KO.read_duplication	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO2.ip_METTL3_KO.read_duplication.pos.DupRate.xls
+RSeQC	read_duplication	KO2.input_METTL3_KO.read_duplication	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO2.input_METTL3_KO.read_duplication.pos.DupRate.xls
+RSeQC	read_duplication	KO1.input_METTL3_KO.read_duplication	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO1.input_METTL3_KO.read_duplication.pos.DupRate.xls
+RSeQC	read_duplication	WT2.input_WT.read_duplication	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT2.input_WT.read_duplication.pos.DupRate.xls
+RSeQC	junction_saturation	KO2.input_METTL3_KO.rseqc	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO2.input_METTL3_KO.rseqc.junctionSaturation_plot.r
+RSeQC	junction_saturation	WT2.ip_WT.rseqc	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT2.ip_WT.rseqc.junctionSaturation_plot.r
+RSeQC	junction_saturation	WT1.input_WT.rseqc	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT1.input_WT.rseqc.junctionSaturation_plot.r
+RSeQC	junction_saturation	KO1.input_METTL3_KO.rseqc	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO1.input_METTL3_KO.rseqc.junctionSaturation_plot.r
+RSeQC	junction_saturation	KO2.ip_METTL3_KO.rseqc	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO2.ip_METTL3_KO.rseqc.junctionSaturation_plot.r
+RSeQC	junction_saturation	KO1.ip_METTL3_KO.rseqc	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO1.ip_METTL3_KO.rseqc.junctionSaturation_plot.r
+RSeQC	junction_saturation	WT1.ip_WT.rseqc	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT1.ip_WT.rseqc.junctionSaturation_plot.r
+RSeQC	junction_saturation	WT2.input_WT.rseqc	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT2.input_WT.rseqc.junctionSaturation_plot.r
+RSeQC	infer_experiment	KO1.ip_METTL3_KO.infer_experiment	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO1.ip_METTL3_KO.infer_experiment.txt
+RSeQC	infer_experiment	KO2.ip_METTL3_KO.infer_experiment	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO2.ip_METTL3_KO.infer_experiment.txt
+RSeQC	infer_experiment	KO1.input_METTL3_KO.infer_experiment	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO1.input_METTL3_KO.infer_experiment.txt
+RSeQC	infer_experiment	WT1.input_WT.infer_experiment	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT1.input_WT.infer_experiment.txt
+RSeQC	infer_experiment	WT2.input_WT.infer_experiment	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT2.input_WT.infer_experiment.txt
+RSeQC	infer_experiment	KO2.input_METTL3_KO.infer_experiment	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO2.input_METTL3_KO.infer_experiment.txt
+RSeQC	infer_experiment	WT1.ip_WT.infer_experiment	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT1.ip_WT.infer_experiment.txt
+RSeQC	infer_experiment	WT2.ip_WT.infer_experiment	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT2.ip_WT.infer_experiment.txt
+RSeQC	bam_stat	WT1.ip_WT	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT1.ip_WT.bam_stat.txt
+RSeQC	bam_stat	WT1.input_WT	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT1.input_WT.bam_stat.txt
+RSeQC	bam_stat	WT2.ip_WT	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT2.ip_WT.bam_stat.txt
+RSeQC	bam_stat	KO2.input_METTL3_KO	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO2.input_METTL3_KO.bam_stat.txt
+RSeQC	bam_stat	KO2.ip_METTL3_KO	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO2.ip_METTL3_KO.bam_stat.txt
+RSeQC	bam_stat	KO1.input_METTL3_KO	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO1.input_METTL3_KO.bam_stat.txt
+RSeQC	bam_stat	KO1.ip_METTL3_KO	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/KO1.ip_METTL3_KO.bam_stat.txt
+RSeQC	bam_stat	WT2.input_WT	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/WT2.input_WT.bam_stat.txt
+Bowtie 2	all_sections	SRR1207298_hisat2	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207298_hisat2_summary.txt
+Bowtie 2	all_sections	SRR1207293_hisat2	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207293_hisat2_summary.txt
+Bowtie 2	all_sections	SRR1207292_hisat2	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207292_hisat2_summary.txt
+Bowtie 2	all_sections	SRR1207297_hisat2	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207297_hisat2_summary.txt
+Bowtie 2	all_sections	SRR1207294_hisat2	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207294_hisat2_summary.txt
+Bowtie 2	all_sections	SRR1207296_hisat2	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207296_hisat2_summary.txt
+Bowtie 2	all_sections	SRR1207295_hisat2	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207295_hisat2_summary.txt
+Bowtie 2	all_sections	SRR1207291_hisat2	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207291_hisat2_summary.txt
+fastp	all_sections	SRR1207292	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207292_fastp.json
+fastp	all_sections	SRR1207295	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207295_fastp.json
+fastp	all_sections	SRR1207293	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207293_fastp.json
+fastp	all_sections	SRR1207291	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207291_fastp.json
+fastp	all_sections	SRR1207297	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207297_fastp.json
+fastp	all_sections	SRR1207294	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207294_fastp.json
+fastp	all_sections	SRR1207296	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207296_fastp.json
+fastp	all_sections	SRR1207298	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207298_fastp.json
+FastQC	all_sections	SRR1207294_aligners	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207294_aligners_fastqc.zip
+FastQC	all_sections	SRR1207296_aligners	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207296_aligners_fastqc.zip
+FastQC	all_sections	SRR1207298_aligners	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207298_aligners_fastqc.zip
+FastQC	all_sections	SRR1207297_aligners	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207297_aligners_fastqc.zip
+FastQC	all_sections	SRR1207293_aligners	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207293_aligners_fastqc.zip
+FastQC	all_sections	SRR1207291_aligners	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207291_aligners_fastqc.zip
+FastQC	all_sections	SRR1207295_aligners	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207295_aligners_fastqc.zip
+FastQC	all_sections	SRR1207292_aligners	/data1/baoxq/bioinformatics_eg/work/4d/80b7871c65c14a5780243950c0ea74/SRR1207292_aligners_fastqc.zip
