@@ -1,5 +1,6 @@
 # Parameters
 
+- [Default parameters](#default-parameters)
 - [Input/output options](#inputoutput-options)
 - [Data feature options](#data-feature-options)
 - [Reference genome options](#feference-genome-options)
@@ -11,6 +12,50 @@
 - [Methylation analysis options](#methylation-analysis-options)
 - [Plot options](#plot-options)
 - [Other options](#other-options)
+
+## >Default parameters
+
+| Tools or packages or methods                   | Version | Parameters (taking Single-end data as example)               |
+| ---------------------------------------------- | ------- | ------------------------------------------------------------ |
+| **Raw data quality control and preprocessing** |         |                                                              |
+| fastp                                          | 0.19.7  | default                                                      |
+| FastQC                                         | 0.11.8  | default                                                      |
+| **rRNA filtering**                             |         |                                                              |
+| HISAT2                                         | 2.1.0   | `hisat2 --summary-file ${sample_name}_rRNA_summary.txt --no-spliced-alignment --no-softclip --norc --no-unal -p ${task.cpus} --dta --un-gz ${sample_id}.fastq.gz -x genome_index -U read1.fastq.gz` |
+| **Reads alignment**                            |         |                                                              |
+| STAR                                           | 2.6.1b  | `STAR --runThreadN ${task.cpus} --readFilesCommand zcat --twopassMode Basic --genomeDir genome_index --readFilesIn read1.fastq.gz --outSAMtype BAM Unsorted --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterIntronMotifs RemoveNoncanonical --outFilterMultimapNmax 20 --alignIntronMin 20 --alignIntronMax 100000 --alignMatesGapMax 1000000 --outFileNamePrefix ${sample_name} > ${sample_name}_log.txt` |
+| HISAT2                                         | 2.1.0   | `hisat2 --summary-file ${sample_name}_hisat2_summary.txt -p ${task.cpus} --dta -x genome_index -U read1.fastq.gz` |
+| BWA                                            | 0.7.17  | `bwa aln -t ${task.cpus} -f ${read1.baseName}.sai genome_index read1.fastq.gz <br />bwa samse genome_index ${read1.baseName}.sai read1.fastq.gz` |
+| **Quality control after alignment**            |         |                                                              |
+| SAMtools                                       | 1.9     | default for converting sam to bam format followed by sorting and indexing, 20 for mapping quality filtering |
+| RseQC                                          | 2.6.4   | infer_experiment.py<br />junction_annotation.py<br />bam_stat.py<br />junction_saturation.py<br />inner_distance.py<br />read_distribution.py<br />read_duplication.py |
+| **Expression quantification**                  |         |                                                              |
+| featureCounts                                  | 2.0.0   | default, `-Q 0 -s 0`                                         |
+| **Differential expression analysis**           |         |                                                              |
+| DESeq2                                         | 1.22.1  | default                                                      |
+| edgeR                                          | 3.26.0  | default                                                      |
+| **Peak calling**                               |         |                                                              |
+| MeTPeak                                        | 1.0.0   | default                                                      |
+| MACS2                                          | 2.1.2   | default, `-q 0.01 --keep-dup 5 -f BAM --nomodel`             |
+| MATK                                           | 1.0     | default, `-q 0.05`                                           |
+| Meyer                                          |         | python scripts                                               |
+| **Peak merging**                               |         |                                                              |
+| RobustRankAggreg                               | 1.1     | R scripts                                                    |
+| MSPC                                           | 5.4.0   | default, `-r bio -s 1E-4 -w 1E-2 / -r tec -s 1E-2 -w 1E-1`   |
+| BEDTools                                       | 2.27.1  | intersectBed                                                 |
+| Peak annotated                                 |         | Perl scripts                                                 |
+| **motif searching**                            |         |                                                              |
+| HOMER                                          | 4.9.1   | defalut, `-len 5,6,7,8 -S 10 -rna -dumpFasta`                |
+| **methylation quantification**                 |         |                                                              |
+| QNB                                            | 1.1.11  | mode="blind"                                                 |
+| MATK                                           | 1.0     | -quantification                                              |
+| RPKM method                                    | 2.27.1  | (ip_rpkm+1)/(input_rpkm+1)                                   |
+| **Differential methylation analysis**          |         |                                                              |
+| QNB                                            | 1.1.11  | mode="auto"                                                  |
+| MATK                                           | 1.0     | -diff                                                        |
+| DESeq2(GLM)                                    | 1.22.1  | R scripts, diff.log2fc = peak.log2fc - gene.log2fc           |
+| edgeR(GLM)                                     | 3.26.0  | R scripts, diff.log2fc = peak.log2fc - gene.log2fc           |
+| Wilcox-test                                    |         | R scripts                                                    |
 
 ## >Input/output options
 
