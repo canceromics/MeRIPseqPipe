@@ -1,47 +1,47 @@
 name: meripseqpipe-1.0dev
 channels:
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
   - r
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda/
+  - conda-forge
+  - bioconda
+  - anaconda
+  - defaults
 dependencies:
   - openjdk=8.0.192
   - python=2.7.15
   - picard=2.21.6
   - fastqc=0.11.8
-  - fastp=0.23.1
+  - fastp=0.19.7
   - bedtools=2.27.1
   - ucsc-gtftogenepred=377
   - ucsc-fatotwobit=377
   - ucsc-facount=377
-  - hisat2=2.2.1
-  - bowtie2=2.4.4
+  - hisat2=2.1.0
+  - bowtie2=2.2.5
   - bwa=0.7.17
   - star=2.6.1b
   - tophat=2.1.1
-  - samtools=1.14
-  - rseqc=4.0.0
-  - macs2=2.2.7.1
-  - homer=4.11
+  - samtools=1.9
+  - rseqc=2.6.4
+  - macs2=2.1.2
+  - homer=4.9.1
   - dos2unix=7.4.1
-  - r-base=4.0.5
-  - bioconductor-edger=3.34.0
-  - bioconductor-deseq2=1.32.0
+  - r-base=3.5.1
+  - bioconductor-edger=3.26.0
+  - bioconductor-deseq2=1.22.1
   - igvtools=2.3.93
-  - bioconductor-exomepeak=2.17.0
   - r-robustrankaggreg=1.1
   - perl=5.26.2
   - ucsc-genepredtobed=377
   - scipy=1.2.1
   - deeptools=3.1.3
   - ucsc-bigwigtowig=357
-  - r-ggplot2=3.3.5
-  - r-ggrepel=0.9.1
+  - r-ggplot2=3.1.1
+  - r-ggrepel=0.8.1
   - r-ggsci=2.9
   - r-pheatmap=1.0.12
-  - r-dplyr=1.0.7
-  - r-knitr=1.36
+  - r-dplyr=0.8.0.1
+  - r-knitr=1.22
   - r-ggseqlogo=0.1
-  - r-rmarkdown=2.11
+  - r-rmarkdown=1.10
   - subread=2.0.0 
   - pandoc=2.7.3

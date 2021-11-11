@@ -126,7 +126,7 @@ All the intermediate files are output in the pipe result folder, users can use t
 
 ​ [MultiQC](http://multiqc.info) is a visualisation tool that generates a single HTML report summarising all samples in your project. Most of the pipeline QC results are visualised in the report and further statistics are available in within the report data directory.
 
-![image](images/multiqc_report_creenshot.png)
+<img src="images/multiqc_report_sreenshot.PNG" alt="image" style="zoom:80%;" />
 
 * `QCReadsReport/multiqc_report_hisat2_data`: containing statistics data files
 * `QCReadsReport/multiqc_report_hisat2.html`: check [multiqc_report_hisat2.html](#reports/QCReadsReport/multiqc_report_hisat2.html) for the full report.
