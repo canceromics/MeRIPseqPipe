@@ -104,7 +104,7 @@ If you would like to contribute to this pipeline, please see the [contributing g
 
 ## BioTreasury
 
-MeRIPseqPipe has been uploaded to BioTreasury(https://biotreasury.rjmart.cn/#/tool?id=61140), welcome to use and comment!
+MeRIPseqPipe has been registed to BioTreasury(https://biotreasury.rjmart.cn/#/tool?id=61140), welcome to use and comment!
 
 ## Citation
 Xiaoqiong Bao, Kaiyu Zhu, Xuefei Liu, Zhihang Chen, Ziwei Luo, Qi Zhao, Jian Ren, Zhixiang Zuo, MeRIPseqPipe: an integrated analysis pipeline for MeRIP-seq data based on Nextflow, Bioinformatics, 2022;, btac025, https://doi.org/10.1093/bioinformatics/btac025.
