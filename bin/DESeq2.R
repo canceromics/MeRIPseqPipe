@@ -41,6 +41,6 @@ res <- res[order(res$padj),]
 #resdata <- merge(as.data.frame(res), as.data.frame(counts(dds, normalized=TRUE)),by="row.names",sort=FALSE)
 #resdata2=resdata[resdata$log2FoldChange > 1|resdata$log2FoldChange < -1, ]
 ### set output_name
-output_name <- paste0("DESeq2_group_",aligner,"_"group_id_1, "_",group_id_2)
+output_name <- paste0("DESeq2_group_",aligner,"_", group_id_1, "_",group_id_2)
 write.csv(res, file = paste0(output_name, ".csv"))
 #write.csv(resdata2,file = paste0(output_name, "_log2.csv"),row.names =FALSE)
